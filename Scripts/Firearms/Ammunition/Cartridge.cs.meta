@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 6577cb8e6f107064294f942bbab1e7b1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - smallCasing: {fileID: 13400000, guid: 1016040e86f1bf44fab78e8b5e470c2a, type: 2}
+  - mediumCasing: {fileID: 13400000, guid: bb14f8d40b0448b4f8afee2443732753, type: 2}
+  - heavyCasing: {fileID: 13400000, guid: 7cdd7c93c13bc8f438ec27d8b66d243d, type: 2}
+  - shell: {fileID: 13400000, guid: 2071c46cbf4ff6e4aadcf571a9c29519, type: 2}
+  - firedOnlyObject: {instanceID: 0}
+  - unfiredOnlyObject: {instanceID: 0}
+  - data: {instanceID: 0}
+  - detonationParticle: {instanceID: 0}
+  - additionalMuzzleFlash: {instanceID: 0}
+  - cartridgeFirePoint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
