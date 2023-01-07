@@ -8,25 +8,31 @@ namespace GhettosFirearmSDKv2
     public class BoltSemiautomatic : BoltBase
     {
         public List<AttachmentPoint> onBoltPoints;
+        [Space]
         public bool locksWhenSafetyIsOn = false;
+        [Space]
         public bool hasBoltcatch = true;
         public bool hasBoltCatchReleaseControl = true;
         public BoltReleaseButton[] releaseButtons;
+        [Space]
         public Rigidbody rigidBody;
         public Transform bolt;
         public Transform chargingHandle;
+        [Space]
         public Transform startPoint;
         public Transform endPoint;
         public Transform akBoltLockPoint;
         public Transform catchPoint;
         public Transform roundLoadPoint;
+        public Transform hammerCockPoint;
+        [Space]
         public Transform roundMount;
         public Cartridge loadedCartridge;
-
+        [Space]
         private ConfigurableJoint joint;
         public ConstantForce force;
         public float pointTreshold = 0.004f;
-
+        [Space]
         public AudioSource[] rackSounds;
         public AudioSource[] pullSounds;
         public AudioSource[] chargingHandleRackSounds;
@@ -35,10 +41,12 @@ namespace GhettosFirearmSDKv2
         public AudioSource[] pullSoundsHeld;
         public AudioSource[] rackSoundsNotHeld;
         public AudioSource[] pullSoundsNotHeld;
-
+        [Space]
         public float roundEjectForce = 0.6f;
         public Transform roundEjectDir;
         public Transform roundEjectPoint;
+        [Space]
+        public Hammer hammer;
 
         private void Awake()
         {
