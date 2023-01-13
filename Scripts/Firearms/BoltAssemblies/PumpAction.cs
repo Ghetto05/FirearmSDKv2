@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ThunderRoad;
 using UnityEngine;
 
 namespace GhettosFirearmSDKv2
@@ -7,12 +8,14 @@ namespace GhettosFirearmSDKv2
     [AddComponentMenu("Firearm SDK v2/Bolt assemblies/Pump action")]
     public class PumpAction : BoltBase
     {
-        public Rigidbody handle;
+        public Rigidbody rb;
         public Transform bolt;
         public Transform startPoint;
         public Transform endPoint;
         public Transform roundEjectPoint;
         public Transform roundLoadPoint;
+        public List<AttachmentPoint> onBoltPoints;
+        public List<Handle> boltHandles;
 
         public float pointTreshold = 0.004f;
 
@@ -25,7 +28,6 @@ namespace GhettosFirearmSDKv2
         public Transform roundEjectDir;
 
         public Transform roundMount;
-        public Transform roundMountAfterLock;
         public Cartridge loadedCartridge;
     }
 }
