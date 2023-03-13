@@ -10,7 +10,8 @@ namespace GhettosFirearmSDKv2
         public enum Types
         {
             InfraRed,
-            Thermal
+            Thermal,
+            FirstPerson
         }
 
         public Types renderType;

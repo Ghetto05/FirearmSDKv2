@@ -15,6 +15,9 @@ namespace GhettosFirearmSDKv2.UI
         [Header("Disable magazine collisions")]
         public Toggle disableMagazineCollisionsButton;
 
+        [Header("HUD scale")]
+        public Text hudScaleDisplay;
+
         void Awake()
         {
         }
@@ -32,6 +35,10 @@ namespace GhettosFirearmSDKv2.UI
         }
 
         public void ToggleStoreMagazinesInInventory()
+        {
+        }
+
+        public void ChangeHUDScale(float value)
         {
         }
     }

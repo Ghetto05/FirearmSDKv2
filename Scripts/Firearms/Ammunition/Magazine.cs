@@ -32,7 +32,7 @@ namespace GhettosFirearmSDKv2
         public MagazineLoad defaultLoad;
         [HideInInspector]
         public bool hasOverrideLoad;
-        public Transform overrideItem;
+        public Item overrideItem;
         public List<Collider> colliders;
 
         [EasyButtons.Button]
@@ -45,7 +45,7 @@ namespace GhettosFirearmSDKv2
         [EasyButtons.Button]
         public void SetAudioSourceMixers()
         {
-            Util.FixLinkers(gameObject);
+            Util.FixAudioSources(gameObject);
         }
 
         [EasyButtons.Button]

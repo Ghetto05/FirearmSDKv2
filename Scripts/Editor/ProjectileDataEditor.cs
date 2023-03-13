@@ -15,6 +15,10 @@ namespace GhettosFirearmSDKv2
         public override void OnInspectorGUI()
         {
             data = (ProjectileData)target;
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Additional information for ammo box:", GUILayout.Width(300));
+            data.additionalInformation = EditorGUILayout.TextArea(data.additionalInformation);
+            EditorGUILayout.EndHorizontal();
 
             data.isHitscan = EditorGUILayout.Toggle("Is hitscan?", data.isHitscan);
             data.accuracyMultiplier = EditorGUILayout.FloatField("Accuracy multiplier", data.accuracyMultiplier);

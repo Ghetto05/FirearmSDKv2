@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GhettosFirearmSDKv2
 {
-    public class FirearmBase : MonoBehaviour
+    public class FirearmBase : AIFireable
     {
         public Item item;
         public bool disableMainFireHandle = false;

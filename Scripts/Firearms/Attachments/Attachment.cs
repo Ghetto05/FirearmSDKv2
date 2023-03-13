@@ -21,8 +21,9 @@ namespace GhettosFirearmSDKv2
         public List<string> alternateGroupsIds;
         [Space]
         public bool isSuppressing;
-        public bool damageMultiplier;
-        //[HideInInspector]
+        public bool multiplyDamage = false;
+        public float damageMultiplier = 1f;
+        [HideInInspector]
         public Texture2D icon;
         private Preview preview;
         public bool overridesMuzzleFlash;
@@ -40,7 +41,7 @@ namespace GhettosFirearmSDKv2
         [EasyButtons.Button]
         public void SetAudioSourceMixers()
         {
-            Util.FixLinkers(gameObject);
+            Util.FixAudioSources(gameObject);
         }
 
         [EasyButtons.Button]

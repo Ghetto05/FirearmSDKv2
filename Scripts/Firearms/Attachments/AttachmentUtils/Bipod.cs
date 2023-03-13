@@ -14,7 +14,8 @@ namespace GhettosFirearmSDKv2
         public List<Transform> positions;
         public Handle toggleHandle;
         public AudioSource toggleSound;
-        private int index = 0;
+        [HideInInspector]
+        public int index;
 
         public void ToggleUp()
         {

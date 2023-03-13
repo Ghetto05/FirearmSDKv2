@@ -13,6 +13,7 @@ namespace GhettosFirearmSDKv2.Explosives
         public float damage;
         public float radius;
         public float force;
+        [TypePicker(TypePicker.Types.ExplosiveEffect)]
         public string effectId;
         public float upwardsModifier;
         //public int shrapnelCount;

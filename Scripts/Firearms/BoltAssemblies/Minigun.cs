@@ -8,8 +8,6 @@ namespace GhettosFirearmSDKv2
     public class Minigun : BoltBase
     {
         public float[] barrelAngles;
-        float lastRotation;
-        public float rotationsPerSecond;
         public Transform roundMount;
         public Cartridge loadedCartridge;
         public Transform roundEjectPoint;
@@ -21,8 +19,5 @@ namespace GhettosFirearmSDKv2
         public AudioSource RevDownSound;
         public AudioSource RotatingLoop;
         public AudioSource RotatingLoopPlusFiring;
-        bool trigger;
-        bool revving;
-        float degreesPerSecond;
     }
 }

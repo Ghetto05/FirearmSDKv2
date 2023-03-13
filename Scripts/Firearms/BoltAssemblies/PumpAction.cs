@@ -12,22 +12,22 @@ namespace GhettosFirearmSDKv2
         public Transform bolt;
         public Transform startPoint;
         public Transform endPoint;
+        public Transform hammerCockPoint;
         public Transform roundEjectPoint;
         public Transform roundLoadPoint;
         public List<AttachmentPoint> onBoltPoints;
+        [HideInInspector]
         public List<Handle> boltHandles;
-
         public float pointTreshold = 0.004f;
-
         public AudioSource[] rackSounds;
         public AudioSource[] pullSounds;
-
         public bool slamFire;
-
         public float roundEjectForce = 0.6f;
         public Transform roundEjectDir;
-
         public Transform roundMount;
+        public Transform roundReparent;
+        [HideInInspector]
         public Cartridge loadedCartridge;
+        public Hammer hammer;
     }
 }

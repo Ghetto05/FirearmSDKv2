@@ -15,7 +15,8 @@ namespace GhettosFirearmSDKv2
         public enum Types
         {
             Attachment,
-            Caliber
+            Caliber,
+            ExplosiveEffect
         }
 
         public bool showPopup;
@@ -63,12 +64,17 @@ namespace GhettosFirearmSDKv2
                     {
                         case TypePicker.Types.Attachment:
                             {
-                                content = TypeFiles.attachmentTypesFile().text;
+                                content = TypeFiles.AttachmentTypesFile().text;
                             }
                             break;
                         case TypePicker.Types.Caliber:
                             {
-                                content = TypeFiles.caliberTypesFile().text;
+                                content = TypeFiles.CalibersFile().text;
+                            }
+                            break;
+                        case TypePicker.Types.ExplosiveEffect:
+                            {
+                                content = TypeFiles.ExplosiveEffectsFile().text;
                             }
                             break;
                         default:
@@ -87,12 +93,17 @@ namespace GhettosFirearmSDKv2
                     {
                         case TypePicker.Types.Attachment:
                             {
-                                content = TypeFiles.attachmentTypesFile().text;
+                                content = TypeFiles.AttachmentTypesFile().text;
                             }
                             break;
                         case TypePicker.Types.Caliber:
                             {
-                                content = TypeFiles.caliberTypesFile().text;
+                                content = TypeFiles.CalibersFile().text;
+                            }
+                            break;
+                        case TypePicker.Types.ExplosiveEffect:
+                            {
+                                content = TypeFiles.ExplosiveEffectsFile().text;
                             }
                             break;
                         default:

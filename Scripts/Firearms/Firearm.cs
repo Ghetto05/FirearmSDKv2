@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using ThunderRoad;
+using UnityEditor;
 
 namespace GhettosFirearmSDKv2
 {
@@ -15,9 +16,28 @@ namespace GhettosFirearmSDKv2
         public List<AttachmentPoint> attachmentPoints;
 
         [EasyButtons.Button]
+        public void SetupColliderGroup()
+        {
+            if (GetComponentInChildren<ColliderGroup>() == null)
+            {
+                GameObject body = new GameObject("Body");
+                body.transform.SetParent(transform);
+                ColliderGroup colliderGroup = body.AddComponent<ColliderGroup>();
+                GameObject blunt = new GameObject("Blunt");
+                blunt.transform.SetParent(transform);
+                Damager damager = blunt.AddComponent<Damager>();
+                damager.colliderGroup = colliderGroup;
+                GameObject mechanics = new GameObject("Mechanics");
+                mechanics.transform.SetParent(colliderGroup.transform);
+                GameObject colliders = new GameObject("Colliders");
+                colliders.transform.SetParent(colliderGroup.transform);
+            }
+        }
+
+        [EasyButtons.Button]
         public void SetAudioSourceMixers()
         {
-            Util.FixLinkers(gameObject);
+            Util.FixAudioSources(gameObject);
         }
 
         [EasyButtons.Button]

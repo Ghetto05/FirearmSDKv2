@@ -6,7 +6,7 @@ using GhettosFirearmSDKv2.Explosives;
 namespace GhettosFirearmSDKv2
 {
     [AddComponentMenu("Firearm SDK v2/Explosives/Detonators/Impact based")]
-    public class ImpactDetonator : MonoBehaviour
+    public class ImpactDetonator : Explosive
     {
         public Explosive explosive;
         public Collider[] triggers;

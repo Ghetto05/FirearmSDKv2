@@ -1,24 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace GhettosFirearmSDKv2
 {
     public class TypeFiles : ScriptableObject
     {
-        public TextAsset attachmentTypesFileAsset;
-        public TextAsset caliberTypesFileAsset;
+#if UNITY_EDITOR
 
-        public static TextAsset attachmentTypesFile()
+        public static TextAsset AttachmentTypesFile()
         {
-            TypeFiles tf = (TypeFiles) CreateInstance(typeof(TypeFiles));
-            return tf.attachmentTypesFileAsset;
+            return (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/FirearmSDKv2/Types/CommonAttachmentTypes.json", typeof(TextAsset));
         }
 
-        public static TextAsset caliberTypesFile()
+        public static TextAsset CalibersFile()
         {
-            TypeFiles tf = (TypeFiles) CreateInstance(typeof(TypeFiles));
-            return tf.caliberTypesFileAsset;
+            return (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/FirearmSDKv2/Types/Calibers.json", typeof(TextAsset));
         }
+
+        public static TextAsset ExplosiveEffectsFile()
+        {
+            return (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/FirearmSDKv2/Types/ExplosiveEffects.json", typeof(TextAsset));
+        }
+#endif
     }
 }

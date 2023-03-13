@@ -9,6 +9,7 @@ namespace GhettosFirearmSDKv2
     {
         public FirearmBase firearm;
         public string acceptedMagazineType;
+        public List<string> alternateMagazineTypes;
         public string caliber;
         public List<string> alternateCalibers;
         public Collider loadingCollider;
@@ -16,6 +17,7 @@ namespace GhettosFirearmSDKv2
         public bool canEject = true;
         public bool ejectOnEmpty = false;
         public Magazine currentMagazine;
+        public bool mountCurrentMagazine = false;
         public bool spawnMagazineOnAwake = true;
 
         public bool IsEmpty()

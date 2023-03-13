@@ -8,9 +8,7 @@ namespace GhettosFirearmSDKv2
     {
         public FirearmBase firearm;
         public bool fireOnTriggerPress = true;
-        [HideInInspector]
-        public BoltState state = BoltState.Locked;
-        public BoltState laststate = BoltState.Locked;
+        public ReciprocatingBarrel reciprocatingBarrel;
 
         public virtual void TryFire()
         {

@@ -11,10 +11,11 @@ namespace GhettosFirearmSDKv2
 {
     public class Util
     {
-        public static void FixLinkers(GameObject parent)
+        public static void FixAudioSources(GameObject gameObject)
         {
-            foreach (AudioSource a in parent.GetComponentsInChildren<AudioSource>())
+            foreach (AudioSource a in gameObject.GetComponentsInChildren<AudioSource>())
             {
+                #region mixer
                 if (a.gameObject.GetComponent<AudioMixerLinker>() is AudioMixerLinker linker)
                 {
                     linker.audioMixer = AudioMixerName.Effect;
@@ -24,9 +25,12 @@ namespace GhettosFirearmSDKv2
                     linker = a.gameObject.AddComponent<AudioMixerLinker>();
                     linker.audioMixer = AudioMixerName.Effect;
                 }
+                #endregion mixer
+                a.spatialBlend = 1f;
+                a.playOnAwake = false;
             }
 #if UNITY_EDITOR
-            EditorUtility.SetDirty(parent);
+            EditorUtility.SetDirty(gameObject);
 #endif
         }
 

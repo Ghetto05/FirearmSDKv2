@@ -12,7 +12,7 @@ namespace GhettosFirearmSDKv2
         public float fuseTime;
         public Transform startPosition;
         public Transform endPosition;
-        public Rigidbody body;
+        public Transform body;
         public float deployForce;
         public Transform forceDir;
         public List<Lock> locks;

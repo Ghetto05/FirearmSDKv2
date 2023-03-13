@@ -12,11 +12,16 @@ namespace GhettosFirearmSDKv2
     [AddComponentMenu("Firearm SDK v2/Ammunition/Cartridge")]
     public class Cartridge : MonoBehaviour
     {
+        [HideInInspector]
         public PhysicMaterial smallCasing;
+        [HideInInspector]
         public PhysicMaterial mediumCasing;
+        [HideInInspector]
         public PhysicMaterial heavyCasing;
+        [HideInInspector]
         public PhysicMaterial shell;
 
+        public bool keepRotationAtZero = false;
         public GameObject firedOnlyObject;
         public GameObject unfiredOnlyObject;
         public string caliber;
