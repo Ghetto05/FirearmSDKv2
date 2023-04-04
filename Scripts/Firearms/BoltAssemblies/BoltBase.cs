@@ -29,5 +29,10 @@ namespace GhettosFirearmSDKv2
             Back,
             LockedBack
         }
+
+        public static Vector3 GrandparentLocalPosition(Transform child, Transform grandparent)
+        {
+            return grandparent.InverseTransformPoint(child.position);
+        }
     }
 }

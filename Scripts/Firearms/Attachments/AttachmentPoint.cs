@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EasyButtons;
+using System.Collections.Generic;
 using ThunderRoad;
 using UnityEditor;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace GhettosFirearmSDKv2
         public GameObject disableOnAttach;
 
 #if UNITY_EDITOR
-        [EasyButtons.Button]
+        [Button]
         public void MarkShortScope()
         {
             if (alternateTypes == null) alternateTypes = new List<string>();
@@ -30,7 +31,7 @@ namespace GhettosFirearmSDKv2
             EditorUtility.SetDirty(this.gameObject);
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void MarkMediumScope()
         {
             if (alternateTypes == null) alternateTypes = new List<string>();
@@ -41,7 +42,7 @@ namespace GhettosFirearmSDKv2
             EditorUtility.SetDirty(this.gameObject);
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void MarkLongScope()
         {
             if (alternateTypes == null) alternateTypes = new List<string>();

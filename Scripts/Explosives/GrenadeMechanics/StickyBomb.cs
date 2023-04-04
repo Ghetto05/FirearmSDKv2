@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ThunderRoad;
+using UnityEngine.Events;
 
 namespace GhettosFirearmSDKv2
 {
@@ -10,5 +11,7 @@ namespace GhettosFirearmSDKv2
     public class StickyBomb : MonoBehaviour
     {
         public List<Collider> colliders;
+
+        public UnityEvent onStickEvent;
     }
 }

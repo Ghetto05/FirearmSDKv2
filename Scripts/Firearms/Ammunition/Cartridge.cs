@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using ThunderRoad;
+using EasyButtons;
 
 namespace GhettosFirearmSDKv2
 {
@@ -21,6 +23,7 @@ namespace GhettosFirearmSDKv2
         [HideInInspector]
         public PhysicMaterial shell;
 
+        public bool disallowDespawn = false;
         public bool keepRotationAtZero = false;
         public GameObject firedOnlyObject;
         public GameObject unfiredOnlyObject;
@@ -36,7 +39,7 @@ namespace GhettosFirearmSDKv2
         public Transform cartridgeFirePoint;
         public UnityEvent onFireEvent;
 
-        [EasyButtons.Button]
+        [Button]
         public void FindAllCollider()
         {
             colliders = this.gameObject.GetComponentsInChildren<Collider>().ToList();

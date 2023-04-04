@@ -8,6 +8,7 @@ namespace GhettosFirearmSDKv2
     public class Hammer : MonoBehaviour
     {
         public Item item;
+        public Firearm firearm;
         public Transform hammer;
         public Transform idlePosition;
         public Transform cockedPosition;

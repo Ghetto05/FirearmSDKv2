@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.Events;
 using UnityEditor;
+using EasyButtons;
 
 namespace GhettosFirearmSDKv2
 {
@@ -38,13 +39,13 @@ namespace GhettosFirearmSDKv2
         public List<UnityEvent> OnDetachEvents;
 #if UNITY_EDITOR
 
-        [EasyButtons.Button]
+        [Button]
         public void SetAudioSourceMixers()
         {
             Util.FixAudioSources(gameObject);
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void SetupColliderGroupAndBluntDamager()
         {
             if (colliderGroup == null)

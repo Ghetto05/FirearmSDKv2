@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ThunderRoad;
+using UnityEditor;
 
 namespace GhettosFirearmSDKv2
 {

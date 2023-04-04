@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using ThunderRoad;
 using UnityEditor;
+using EasyButtons;
 
 namespace GhettosFirearmSDKv2
 {

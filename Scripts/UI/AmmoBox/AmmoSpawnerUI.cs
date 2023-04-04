@@ -38,7 +38,7 @@ namespace GhettosFirearmSDKv2
             
         }
 
-        public void ClearMagazine(Magazine mag = null)
+        public void ClearMagazine()
         {
         
         }

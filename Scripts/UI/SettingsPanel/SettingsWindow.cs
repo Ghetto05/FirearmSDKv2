@@ -18,6 +18,13 @@ namespace GhettosFirearmSDKv2.UI
         [Header("HUD scale")]
         public Text hudScaleDisplay;
 
+        [Header("Forced casing despawn")]
+        public Text despawnCasingsTimeDisplay;
+        public UnityEngine.UI.Slider despawnCasingsTimeSlider;
+
+        [Header("Long press time")]
+        public Text longPressTimeDisplay;
+
         void Awake()
         {
         }
@@ -39,6 +46,10 @@ namespace GhettosFirearmSDKv2.UI
         }
 
         public void ChangeHUDScale(float value)
+        {
+        }
+
+        public void ChangeLongPressTime(float value)
         {
         }
     }

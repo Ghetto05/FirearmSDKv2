@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ThunderRoad;
+using EasyButtons;
 
 namespace GhettosFirearmSDKv2
 {
@@ -23,7 +24,7 @@ namespace GhettosFirearmSDKv2
             if (defaultReticle != null) defaultReticle.SetActive(true);
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void Switch()
         {
             if (defaultReticle == null) return;

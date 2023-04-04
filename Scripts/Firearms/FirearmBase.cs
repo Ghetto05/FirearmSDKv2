@@ -25,6 +25,7 @@ namespace GhettosFirearmSDKv2
         public int roundsPerMinute;
         [HideInInspector]
         public float lastPressTime = 0f;
+        [HideInInspector]
         public float longPressTime = 0.5f;
         public float recoilModifier = 1f;
         [HideInInspector]

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ThunderRoad;
+using EasyButtons;
 
 namespace GhettosFirearmSDKv2
 {
@@ -9,7 +10,7 @@ namespace GhettosFirearmSDKv2
     {
         public AudioSource[] sources;
 
-        [EasyButtons.Button]
+        [Button]
         public void Play()
         {
             foreach (AudioSource source in sources)

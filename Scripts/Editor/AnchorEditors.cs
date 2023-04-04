@@ -16,19 +16,19 @@ namespace GhettosFirearmSDKv2
 
         public Transform RackAnchor;
         public Transform ViceAnchor;
-        public List<Firearm> firearms;
+        public List<Item> firearms;
 
         public void GoTo(Anchors anchor)
         {
             string anchorName = anchor == Anchors.Vice ? "Ghetto's Firearm SDK V2 vice anchor" : "HolderRackTopAnchor";
             Transform target = anchor == Anchors.Vice ? ViceAnchor : RackAnchor;
             GetAllFirearms();
-            foreach (Firearm firearm in firearms)
+            foreach (Item firearm in firearms)
             {
                 firearm.transform.SetParent(anchor == Anchors.Vice? ViceAnchor : RackAnchor);
-                if (firearm.item.GetHolderPoint(anchorName) != null)
+                if (firearm.GetHolderPoint(anchorName) != null)
                 {
-                    firearm.transform.MoveAlign(firearm.item.GetHolderPoint(anchorName).anchor, target);
+                    firearm.transform.MoveAlign(firearm.GetHolderPoint(anchorName).anchor, target);
                 }
                 else
                 {
@@ -42,18 +42,25 @@ namespace GhettosFirearmSDKv2
         {
             string anchorName = anchor == Anchors.Vice ? "Ghetto's Firearm SDK V2 vice anchor" : "HolderRackTopAnchor";
             Transform target = anchor == Anchors.Vice ? ViceAnchor : RackAnchor;
-            foreach (Firearm firearm in firearms)
+            foreach (Item firearm in firearms)
             {
-                if (firearm.item.GetHolderPoint(anchorName) == null) firearm.AddAnchorsAndFixPreview();
-                firearm.item.GetHolderPoint(anchorName).anchor.position = target.position;
-                firearm.item.GetHolderPoint(anchorName).anchor.rotation = target.rotation;
+                if (firearm.GetHolderPoint(anchorName) == null)
+                {
+                    Transform trans = new GameObject("Ghetto's Firearm SDK V2 vice anchor").transform;
+                    trans.parent = firearm.transform;
+                    trans.localPosition = Vector3.zero;
+                    trans.localEulerAngles = Vector3.zero;
+                    Item.HolderPoint holPoint = new Item.HolderPoint(trans, "Ghetto's Firearm SDK V2 vice anchor");
+                    firearm.additionalHolderPoints.Add(holPoint);
+                }
+                firearm.GetHolderPoint(anchorName).anchor.SetPositionAndRotation(target.position, target.rotation);
             }
             firearms = null;
         }
 
         public void GetAllFirearms()
         {
-            firearms = this.gameObject.GetComponentsInChildren<Firearm>().ToList();
+            firearms = this.gameObject.GetComponentsInChildren<Item>().ToList();
         }
     }
 }
