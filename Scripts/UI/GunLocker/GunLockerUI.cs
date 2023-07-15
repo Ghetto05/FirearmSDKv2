@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ThunderRoad;
 using UnityEngine.UI;
+using TMPro;
 
 namespace GhettosFirearmSDKv2
 {
@@ -17,6 +18,14 @@ namespace GhettosFirearmSDKv2
         public GameObject savesPrefab;
         public List<string> saves;
         private List<GameObject> saveButtons;
+
+        public List<Button> keys;
+        public List<Button> keysCaps;
+        public List<Button> keysNonCaps;
+        public TextMeshProUGUI typingField;
+        public GameObject typingPanel;
+        public Button cancelButton;
+        public Button confirmButton;
 
         public Holder holder;
 

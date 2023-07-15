@@ -11,22 +11,85 @@ namespace GhettosFirearmSDKv2
     public class ProjectileDataEditor : Editor
     {
         ProjectileData data;
+        bool showSoundAndFlash = false;
 
         public override void OnInspectorGUI()
         {
+            EditorGUILayout.LabelField("Shared settings", EditorStyles.boldLabel);
             data = (ProjectileData)target;
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Additional information for ammo box:", GUILayout.Width(300));
             data.additionalInformation = EditorGUILayout.TextArea(data.additionalInformation);
             EditorGUILayout.EndHorizontal();
 
-            data.isHitscan = EditorGUILayout.Toggle("Is hitscan?", data.isHitscan);
             data.accuracyMultiplier = EditorGUILayout.FloatField("Accuracy multiplier", data.accuracyMultiplier);
             data.recoil = EditorGUILayout.FloatField("Recoil", data.recoil);
             data.recoilUpwardsModifier = EditorGUILayout.FloatField("Recoil upwards torque", data.recoilUpwardsModifier);
-            data.playFirearmDefaultMuzzleFlash = !EditorGUILayout.Toggle("Only play additional muzzle flash?", !data.playFirearmDefaultMuzzleFlash);
+
+            #region Sound and flash override
+            showSoundAndFlash = EditorGUILayout.Foldout(showSoundAndFlash, "Sound and flash overrides", EditorStyles.foldoutHeader);
+            if (showSoundAndFlash)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(1 * 20);
+                data.allowPitchVariation = !EditorGUILayout.Toggle("Disallow pitch variation?", !data.allowPitchVariation);
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(1 * 20);
+                data.playFirearmDefaultMuzzleFlash = !EditorGUILayout.Toggle("Only play additional muzzle flash?", !data.playFirearmDefaultMuzzleFlash);
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(1 * 20);
+                data.alwaysSuppressed = EditorGUILayout.Toggle("Always suppressed?", data.alwaysSuppressed);
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(1 * 20);
+                data.overrideFireSounds = EditorGUILayout.Toggle("Override fire sounds?", data.overrideFireSounds);
+                GUILayout.EndHorizontal();
+
+                if (data.overrideFireSounds)
+                {
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Space(1 * 20);
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("fireSounds"), true);
+                    GUILayout.EndHorizontal();
+
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Space(1 * 20);
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("suppressedFireSounds"), true);
+                    GUILayout.EndHorizontal();
+                }
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(1 * 20);
+                data.overrideMuzzleFlashLightColor = EditorGUILayout.Toggle("Override muzzle flash light color?", data.overrideMuzzleFlashLightColor);
+                GUILayout.EndHorizontal();
+
+                if (data.overrideMuzzleFlashLightColor)
+                {
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Space(1 * 20);
+                    data.muzzleFlashLightColorOne = EditorGUILayout.ColorField("Flash color one", data.muzzleFlashLightColorOne);
+                    GUILayout.EndHorizontal();
+
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Space(1 * 20);
+                    data.muzzleFlashLightColorTwo = EditorGUILayout.ColorField("Flash color two", data.muzzleFlashLightColorTwo);
+                    GUILayout.EndHorizontal();
+                }
+            }
+            #endregion
+
+            EditorGUILayout.Space();
+            data.isHitscan = EditorGUILayout.Toggle("Is hitscan?", data.isHitscan);
+
             if (data.isHitscan)
             {
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Hitscan settings", EditorStyles.boldLabel);
                 data.projectileCount = EditorGUILayout.IntField("Projectile count", data.projectileCount);
                 if (data.projectileCount > 1) data.projectileSpread = EditorGUILayout.FloatField("Projectile spread angle", data.projectileSpread);
                 data.projectileRange = EditorGUILayout.FloatField("Projectile range", data.projectileRange);
@@ -44,6 +107,7 @@ namespace GhettosFirearmSDKv2
                 if (data.knocksOutTemporarily)
                 {
                     data.temporaryKnockoutTime = EditorGUILayout.FloatField("Knockout time", data.temporaryKnockoutTime);
+                    data.kockoutDelay = EditorGUILayout.FloatField("Kockout delay", data.kockoutDelay);
                 }
 
                 EditorGUILayout.Space();
@@ -63,6 +127,7 @@ namespace GhettosFirearmSDKv2
                 {
                     data.tasingForce = EditorGUILayout.FloatField("Electrocution force", data.tasingForce);
                     data.tasingDuration = EditorGUILayout.FloatField("Electrocution duration", data.tasingDuration);
+                    data.playTasingEffect = EditorGUILayout.Toggle("Play effect?", data.playTasingEffect);
                 }
 
                 EditorGUILayout.Space();
@@ -91,9 +156,14 @@ namespace GhettosFirearmSDKv2
             }
             else
             {
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Physical projectile settings", EditorStyles.boldLabel);
                 data.projectileItemId = EditorGUILayout.TextField("Projectile item ID", data.projectileItemId);
                 data.muzzleVelocity = EditorGUILayout.FloatField("Muzzle velocity", data.muzzleVelocity);
+                data.destroyTime = EditorGUILayout.FloatField("Auto destroy time", data.destroyTime);
             }
+
+            serializedObject.ApplyModifiedProperties();
         }
     }
 }

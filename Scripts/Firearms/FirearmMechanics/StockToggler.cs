@@ -12,7 +12,7 @@ namespace GhettosFirearmSDKv2
         public Handle toggleHandle;
         public Transform pivot;
         public Transform[] positions;
-        public Item connectedItem;
+        public Firearm connectedFirearm;
         public Attachment connectedAttachment;
     }
 }

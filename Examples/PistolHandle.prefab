@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 8236219734038709008}
   side: 1
-  defaultHandPoseId: HandleDefault
-  targetWeight: 0
-  targetHandPoseId: 
+  defaultHandPoseId: Ghetto5.FirearmSDKv2.Handposes.PistolGripSecondary
+  targetWeight: 0.533
+  targetHandPoseId: Ghetto5.FirearmSDKv2.Handposes.PistolGripSecondary
   creature: {fileID: 0}
   creatureName: HumanMale
 --- !u!1 &4625486884313823878
@@ -97,9 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 4745900623265687244}
   side: 1
-  defaultHandPoseId: HandleDefault
+  defaultHandPoseId: Ghetto5.FirearmSDKv2.Handposes.PistolGrip
   targetWeight: 0
-  targetHandPoseId: 
+  targetHandPoseId: Ghetto5.FirearmSDKv2.Handposes.PistolGripTriggerPulled
   creature: {fileID: 0}
   creatureName: HumanMale
 --- !u!1 &4883150840313672361
@@ -148,9 +148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 4745900623265687244}
   side: 0
-  defaultHandPoseId: HandleDefault
+  defaultHandPoseId: Ghetto5.FirearmSDKv2.Handposes.PistolGrip
   targetWeight: 0
-  targetHandPoseId: 
+  targetHandPoseId: Ghetto5.FirearmSDKv2.Handposes.PistolGripTriggerPulled
   creature: {fileID: 0}
   creatureName: HumanMale
 --- !u!1 &5105052189075664420
@@ -199,9 +199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 8236219734038709008}
   side: 0
-  defaultHandPoseId: HandleDefault
-  targetWeight: 0
-  targetHandPoseId: 
+  defaultHandPoseId: Ghetto5.FirearmSDKv2.Handposes.PistolGripSecondary
+  targetWeight: 0.533
+  targetHandPoseId: Ghetto5.FirearmSDKv2.Handposes.PistolGripSecondary
   creature: {fileID: 0}
   creatureName: HumanMale
 --- !u!1 &5934036231153995622
@@ -214,6 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 115159277150819204}
   - component: {fileID: 8470162572694408888}
+  - component: {fileID: 2768020023807775138}
   m_Layer: 0
   m_Name: PistolHandle
   m_TagString: Untagged
@@ -253,6 +254,25 @@ MonoBehaviour:
   mainHandle: {fileID: 4745900623265687244}
   secondaryHandle: {fileID: 8236219734038709008}
   firearm: {fileID: 0}
+--- !u!114 &2768020023807775138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934036231153995622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fb1b985b776e74b92c1f709d68fe73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleMode: 1
+  attachment: {fileID: 0}
+  handles:
+  - {fileID: 8236219734038709008}
+  item: {fileID: 0}
+  pressSounds: []
+  releaseSounds: []
 --- !u!1 &8253229182751753474
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +316,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8253229182751753474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc60554697977c045909869297f8f009, type: 3}
+  m_Script: {fileID: 11500000, guid: c433c9d921d8d604f9d1d93f504627f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactableId: 
@@ -305,6 +325,17 @@ MonoBehaviour:
   touchRadius: 0.1
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  data:
+    id: 
+    sensitiveContent: 0
+    sensitiveFilterBehaviour: 0
+    hashId: 0
+    version: 0
+    disableTouch: 0
+    highlighterViewHandFreeOnly: 0
+    localizationId: 
+    highlightDefaultTitle: 
+    highlightDefaultDesignation: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
   orientationDefaultRight: {fileID: 6336740995278568179}
@@ -312,6 +343,7 @@ MonoBehaviour:
   releaseHandle: {fileID: 0}
   silentGrab: 0
   forceAutoDropWhenGrounded: 0
+  ignoreClimbingForceOverride: 0
   reach: 0.5
   handOverlapColliders: []
   customRigidBody: {fileID: 0}
@@ -322,6 +354,14 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   allowedOrientations: []
+  redirectControllerAxis: 0
+  controllerAxisOutputX:
+    m_PersistentCalls:
+      m_Calls: []
+  controllerAxisOutputY:
+    m_PersistentCalls:
+      m_Calls: []
+  type: 0
 --- !u!1 &9145131411296960596
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +405,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9145131411296960596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc60554697977c045909869297f8f009, type: 3}
+  m_Script: {fileID: 11500000, guid: c433c9d921d8d604f9d1d93f504627f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactableId: 
@@ -374,6 +414,17 @@ MonoBehaviour:
   touchRadius: 0.1
   artificialDistance: 0
   touchCenter: {x: 0, y: 0, z: 0}
+  data:
+    id: 
+    sensitiveContent: 0
+    sensitiveFilterBehaviour: 0
+    hashId: 0
+    version: 0
+    disableTouch: 0
+    highlighterViewHandFreeOnly: 0
+    localizationId: 
+    highlightDefaultTitle: 
+    highlightDefaultDesignation: 
   defaultGrabAxisRatio: 0
   ikAnchorOffset: {x: 0, y: 0, z: 0}
   orientationDefaultRight: {fileID: 8129001625573091802}
@@ -381,6 +432,7 @@ MonoBehaviour:
   releaseHandle: {fileID: 0}
   silentGrab: 0
   forceAutoDropWhenGrounded: 0
+  ignoreClimbingForceOverride: 0
   reach: 0.5
   handOverlapColliders: []
   customRigidBody: {fileID: 0}
@@ -391,3 +443,11 @@ MonoBehaviour:
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
   allowedOrientations: []
+  redirectControllerAxis: 0
+  controllerAxisOutputX:
+    m_PersistentCalls:
+      m_Calls: []
+  controllerAxisOutputY:
+    m_PersistentCalls:
+      m_Calls: []
+  type: 1

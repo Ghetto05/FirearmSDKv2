@@ -1,6 +1,7 @@
 ﻿using EasyButtons;
 using System.Collections;
 using ThunderRoad;
+using UnityEditor;
 using UnityEngine;
 
 namespace GhettosFirearmSDKv2
@@ -18,6 +19,10 @@ namespace GhettosFirearmSDKv2
             {
                 ids[i] = cartridgeReference;
             }
+
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(gameObject);
+#endif
         }
 
         public int forCapacity;

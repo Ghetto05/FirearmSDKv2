@@ -11,5 +11,7 @@ namespace GhettosFirearmSDKv2.Explosives
         public ParticleSystem effect;
         public float range;
         public float time;
+        [TypePicker(TypePicker.Types.ExplosiveEffect)]
+        public string effectId;
     }
 }

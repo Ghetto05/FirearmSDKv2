@@ -13,6 +13,8 @@ namespace GhettosFirearmSDKv2
         [Space]
         public bool hasBoltcatch = true;
         public bool hasBoltCatchReleaseControl = true;
+        public bool onlyCatchIfManuallyPulled = false;
+        public bool lockIfNoMagazineFound = false;
         public BoltReleaseButton[] releaseButtons;
         [Space]
         public Rigidbody rigidBody;

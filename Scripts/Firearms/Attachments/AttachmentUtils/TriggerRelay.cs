@@ -8,5 +8,7 @@ namespace GhettosFirearmSDKv2
         public FirearmBase source;
         public FirearmBase target;
         public AttachmentPoint targetPoint;
+        public bool onlyFireWithSpecficFiremode;
+        public FirearmBase.FireModes firemode;
     }
 }

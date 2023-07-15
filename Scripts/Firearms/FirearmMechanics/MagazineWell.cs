@@ -20,6 +20,14 @@ namespace GhettosFirearmSDKv2
         public bool mountCurrentMagazine = false;
         public bool spawnMagazineOnAwake = true;
 
+        public Transform ejectDir;
+        public float ejectForce = 0.3f;
+
+        public bool tryReleasingBoltIfMagazineIsInserted = false;
+
+        public bool onlyAllowEjectionWhenBoltIsPulled = false;
+        public BoltBase.BoltState lockedState;
+
         public bool IsEmpty()
         {
             if (currentMagazine == null) return true;

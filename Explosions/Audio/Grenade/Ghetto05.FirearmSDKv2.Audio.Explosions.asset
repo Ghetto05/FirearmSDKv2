@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5389a61272ad22e43876a35218ae76fb, type: 3}
+  m_Name: Ghetto05.FirearmSDKv2.Audio.Explosions
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: f25087a5762c5af478ae8901ba3f25da, type: 3}
+  - {fileID: 8300000, guid: 4ba31b3b77627884393623a6c130b51b, type: 3}
+  - {fileID: 8300000, guid: b339c58c07f9abf488b10d1e34dcbf39, type: 3}
+  - {fileID: 8300000, guid: bea9c1abdd98f604bb006161d0350bc1, type: 3}
+  useShuffle: 0
+  hashes: 

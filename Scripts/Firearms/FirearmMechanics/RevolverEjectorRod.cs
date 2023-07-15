@@ -21,7 +21,7 @@ namespace GhettosFirearmSDKv2
             Revolver_onClose();
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void Revolver_onOpen()
         {
             axis.SetParent(rigidBody.transform);

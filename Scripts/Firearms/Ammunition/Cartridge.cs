@@ -49,7 +49,7 @@ namespace GhettosFirearmSDKv2
         {
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void SetSmallCasing()
         {
             foreach (Collider c in colliders)
@@ -62,7 +62,7 @@ namespace GhettosFirearmSDKv2
 #endif
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void SetMediumCasing()
         {
             foreach (Collider c in colliders)
@@ -75,7 +75,7 @@ namespace GhettosFirearmSDKv2
 #endif
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void SetHeavyCasing()
         {
             foreach (Collider c in colliders)
@@ -88,7 +88,7 @@ namespace GhettosFirearmSDKv2
 #endif
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void SetShell()
         {
             foreach (Collider c in colliders)

@@ -5,6 +5,7 @@ using System;
 using UnityEngine.Events;
 using UnityEditor;
 using EasyButtons;
+using System.Linq;
 
 namespace GhettosFirearmSDKv2
 {
@@ -51,7 +52,7 @@ namespace GhettosFirearmSDKv2
             if (colliderGroup == null)
             {
                 GameObject colliderGroupObj = new GameObject("Body");
-                colliderGroupObj.transform.SetParent(this.transform);
+                colliderGroupObj.transform.SetParent(transform);
                 colliderGroupObj.transform.localPosition = Vector3.zero;
                 colliderGroupObj.transform.localEulerAngles = Vector3.zero;
                 colliderGroup = colliderGroupObj.AddComponent<ColliderGroup>();
@@ -60,7 +61,7 @@ namespace GhettosFirearmSDKv2
             if (damagers.Count < 1)
             {
                 GameObject damagerObj = new GameObject("Blunt");
-                damagerObj.transform.SetParent(this.transform);
+                damagerObj.transform.SetParent(transform);
                 damagerObj.transform.localPosition = Vector3.zero;
                 damagerObj.transform.localEulerAngles = Vector3.zero;
                 Damager damager = damagerObj.AddComponent<Damager>();
@@ -68,35 +69,62 @@ namespace GhettosFirearmSDKv2
                 damagers.Add(damager);
                 damagerIds.Add("Mace1H");
             }
-            EditorUtility.SetDirty(this.gameObject);
+            EditorUtility.SetDirty(gameObject);
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void FindAllAttachmentPoints()
         {
             attachmentPoints = new List<AttachmentPoint>();
-            foreach (AttachmentPoint point in this.gameObject.GetComponentsInChildren<AttachmentPoint>())
+            foreach (AttachmentPoint point in gameObject.GetComponentsInChildren<AttachmentPoint>())
             {
                 if (!attachmentPoints.Contains(point)) attachmentPoints.Add(point);
             }
-            EditorUtility.SetDirty(this.gameObject);
+            EditorUtility.SetDirty(gameObject);
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void FindAllHandles()
         {
             handles = new List<Handle>();
-            foreach (Handle point in this.gameObject.GetComponentsInChildren<Handle>())
+
+            foreach (Handle point in gameObject.GetComponentsInChildren<Handle>())
             {
                 if (!handles.Contains(point)) handles.Add(point);
             }
-            EditorUtility.SetDirty(this.gameObject);
+            EditorUtility.SetDirty(gameObject);
+        }
+
+        [Button]
+        public void SetAllHandlesAsForegrip()
+        {
+            FindAllHandles();
+
+            List<Handle> oldAdditional = additionalTriggerHandles.ToList();
+            additionalTriggerHandles = new List<Handle>();
+            foreach (Handle handle in handles)
+            {
+                if (!oldAdditional.Contains(handle))
+                {
+                    GhettoHandle.ReplaceHandle(handle);
+                }
+                else
+                {
+                    GhettoHandle h = GhettoHandle.ReplaceHandle(handle);
+                    h.type = GhettoHandle.HandleType.MainGrip;
+                    additionalTriggerHandles.Add(h);
+                }
+            }
+
+
+            FindAllHandles();
+            EditorUtility.SetDirty(gameObject);
         }
 
         private void Reset()
         {
             GameObject prev = new GameObject("Preview");
-            prev.transform.SetParent(this.transform);
+            prev.transform.SetParent(transform);
             prev.transform.localPosition = Vector3.zero;
             prev.transform.localEulerAngles = new Vector3(8.88f, -115.118f, 0f);
             preview = prev.AddComponent<Preview>();
@@ -104,7 +132,7 @@ namespace GhettosFirearmSDKv2
             if (minimumMuzzlePosition == null)
             {
                 minimumMuzzlePosition = new GameObject("MinMuz").transform;
-                minimumMuzzlePosition.SetParent(this.transform);
+                minimumMuzzlePosition.SetParent(transform);
                 minimumMuzzlePosition.localPosition = Vector3.zero;
                 minimumMuzzlePosition.localEulerAngles = Vector3.zero;
             }

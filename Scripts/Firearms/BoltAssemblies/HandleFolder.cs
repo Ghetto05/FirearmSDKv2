@@ -10,6 +10,7 @@ namespace GhettosFirearmSDKv2
     {
         public Transform axis;
         public List<Handle> handles;
+        public List<string> handleNames;
         public Transform defaultPosition;
         public List<Transform> positions;
 

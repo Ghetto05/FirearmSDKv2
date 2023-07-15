@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GhettosFirearmSDKv2
 {
-    [AddComponentMenu("Firearm SDK v2/Locks/Bolt based")]
+    [AddComponentMenu("Firearm SDK v2/Locks/Bolt based lock")]
     public class BoltBasedLock : Lock
     {
         public enum Filters

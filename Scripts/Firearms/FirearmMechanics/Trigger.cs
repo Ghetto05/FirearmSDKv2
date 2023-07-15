@@ -15,5 +15,7 @@ namespace GhettosFirearmSDKv2
 
         public AudioSource pullSound;
         public AudioSource resetSound;
+
+        public float onTriggerWeight = 0.8f;
     }
 }

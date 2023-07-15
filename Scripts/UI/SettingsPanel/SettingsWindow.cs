@@ -20,10 +20,14 @@ namespace GhettosFirearmSDKv2.UI
 
         [Header("Forced casing despawn")]
         public Text despawnCasingsTimeDisplay;
-        public UnityEngine.UI.Slider despawnCasingsTimeSlider;
+        public Slider despawnCasingsTimeSlider;
 
         [Header("Long press time")]
         public Text longPressTimeDisplay;
+
+        [Header("Revolver trigger deadzone")]
+        public Text revolverTriggerDeadzoneDisplay;
+        public Slider revolverTriggerDeadzoneSlider;
 
         void Awake()
         {
@@ -50,6 +54,10 @@ namespace GhettosFirearmSDKv2.UI
         }
 
         public void ChangeLongPressTime(float value)
+        {
+        }
+
+        public void UpdateRevolverTriggerDeadzone(float value)
         {
         }
     }

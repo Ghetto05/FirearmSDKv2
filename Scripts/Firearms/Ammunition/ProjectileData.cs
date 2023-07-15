@@ -28,6 +28,14 @@ namespace GhettosFirearmSDKv2
         public float recoil = 20;
         public float recoilUpwardsModifier = 2f;
         public bool playFirearmDefaultMuzzleFlash = true;
+        public bool alwaysSuppressed = false;
+        public bool allowPitchVariation = true;
+        public bool overrideFireSounds = false;
+        public List<AudioSource> fireSounds;
+        public List<AudioSource> suppressedFireSounds;
+        public bool overrideMuzzleFlashLightColor = false;
+        public Color muzzleFlashLightColorOne = Color.white;
+        public Color muzzleFlashLightColorTwo = Color.white;
 
         //hitscan
         public int projectileCount = 1;
@@ -52,6 +60,7 @@ namespace GhettosFirearmSDKv2
         //temporary knockout
         public bool knocksOutTemporarily = false;
         public float temporaryKnockoutTime = 0f;
+        public float kockoutDelay = 0f;
 
         //hitscan explosive
         public ExplosiveData explosiveData;
@@ -61,9 +70,11 @@ namespace GhettosFirearmSDKv2
         //hitscan electrification
         public float tasingDuration = 5;
         public float tasingForce = 1;
+        public bool playTasingEffect = true;
 
         //physical
         public string projectileItemId;
         public float muzzleVelocity = 200;
+        public float destroyTime = 0f;
     }
 }

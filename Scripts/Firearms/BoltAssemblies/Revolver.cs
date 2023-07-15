@@ -53,14 +53,17 @@ namespace GhettosFirearmSDKv2
         public bool returnedTriggerSinceHammer = true;
         [Space]
         [Header("HAMMER")]
+        public bool singleActionOnly = false;
         public Transform hammerAxis;
         public Transform hammerIdlePosition;
         public Transform hammerCockedPosition;
         public List<AudioSource> hammerHitSounds;
         public List<AudioSource> hammerCockSounds;
+        public Collider cockCollider;
 
         [Space]
         [Header("LOADING")]
+        public bool autoEject = false;
         public Transform ejectDir;
         public float ejectForce;
         public List<string> calibers;

@@ -15,8 +15,27 @@ namespace GhettosFirearmSDKv2
     public class Firearm : FirearmBase
     {
         public List<AttachmentPoint> attachmentPoints;
+#if UNITY_EDITOR
+        [Button]
+        public void SetHandles()
+        {
+            GhettoHandle main = GhettoHandle.ReplaceHandle(item.mainHandleLeft);
+            main.type = GhettoHandle.HandleType.MainGrip;
+            item.mainHandleLeft = main;
+            item.mainHandleRight = item.mainHandleLeft;
 
-        [EasyButtons.Button]
+            if (bolt != null)
+            {
+                foreach (Handle h in bolt.gameObject.GetComponentsInChildren<Handle>())
+                {
+                    GhettoHandle gg = GhettoHandle.ReplaceHandle(h);
+                    gg.type = GhettoHandle.HandleType.Bolt;
+                }
+            }
+            EditorUtility.SetDirty(gameObject);
+        }
+
+        [Button]
         public void SetupColliderGroup()
         {
             if (GetComponentInChildren<ColliderGroup>() == null)
@@ -35,13 +54,14 @@ namespace GhettosFirearmSDKv2
             }
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void SetAudioSourceMixers()
         {
             Util.FixAudioSources(gameObject);
+            EditorUtility.SetDirty(gameObject);
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void FindAllAttachmentPoints()
         {
             attachmentPoints = new List<AttachmentPoint>();
@@ -49,9 +69,10 @@ namespace GhettosFirearmSDKv2
             {
                 if (!attachmentPoints.Contains(point)) attachmentPoints.Add(point);
             }
+            EditorUtility.SetDirty(gameObject);
         }
 
-        [EasyButtons.Button]
+        [Button]
         public void AddAnchorsAndFixPreview()
         {
             item = this.gameObject.GetComponent<Item>();
@@ -98,7 +119,7 @@ namespace GhettosFirearmSDKv2
                 hitscanMuzzle = mademuzzle;
             }
         }
-
+#endif
         private bool HasAnchor(string s)
         {
             foreach (Item.HolderPoint point in item.additionalHolderPoints)

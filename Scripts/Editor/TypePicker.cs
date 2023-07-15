@@ -35,7 +35,7 @@ namespace GhettosFirearmSDKv2
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Wrapper
     {
         public string[] array;

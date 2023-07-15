@@ -7,12 +7,15 @@ namespace GhettosFirearmSDKv2
     [AddComponentMenu("Firearm SDK v2/Firearm components/Hammer")]
     public class Hammer : MonoBehaviour
     {
+        [HideInInspector]
         public Item item;
         public Firearm firearm;
         public Transform hammer;
         public Transform idlePosition;
         public Transform cockedPosition;
         public List<AudioSource> hitSounds;
+        public List<AudioSource> cockSounds;
+        public bool hasDecocker = false;
 
         private void Awake()
         {
@@ -30,7 +33,6 @@ namespace GhettosFirearmSDKv2
         {
             hammer.localPosition = idlePosition.localPosition;
             hammer.localEulerAngles = idlePosition.localEulerAngles;
-            //if (!silent) Util.PlayRandomAudioSource(hitSounds);
         }
     }
 }

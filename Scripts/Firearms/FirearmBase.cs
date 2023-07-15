@@ -7,6 +7,7 @@ namespace GhettosFirearmSDKv2
 {
     public class FirearmBase : AIFireable
     {
+        public bool setUpForHandPose = false;
         public Item item;
         public bool disableMainFireHandle = false;
         public List<Handle> additionalTriggerHandles;
@@ -30,13 +31,15 @@ namespace GhettosFirearmSDKv2
         public float recoilModifier = 1f;
         [HideInInspector]
         public bool countingForLongpress = false;
+        public string defaultAmmoItem;
 
         public enum FireModes
         {
             Safe,
             Semi,
             Burst,
-            Auto
+            Auto,
+            AttachmentFirearm
         }
     }
 }

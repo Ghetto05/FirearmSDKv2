@@ -13,8 +13,8 @@ namespace GhettosFirearmSDKv2
         public Transform SemiPosition;
         public Transform BurstPosition;
         public Transform AutoPosition;
+        public Transform AttachmentFirearmPosition;
         public AudioSource switchSound;
         public FirearmBase.FireModes[] firemodes;
-        private int currentIndex = 0;
     }
 }

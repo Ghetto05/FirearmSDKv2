@@ -79,16 +79,41 @@ namespace GhettosFirearmSDKv2
             yield break;
         }
 
-        public static void PlayRandomAudioSource(AudioSource[] sources)
+        public static void PlayRandomAudioSource(List<AudioSource> sources)
         {
-            if (sources == null || sources.Length == 0) return;
-            int i = Random.Range(0, sources.Length);
-            if (sources[i] != null) sources[i].Play();
+            AudioSource source = GetRandomFromList(sources);
+            if (source != null) source.Play();
         }
+
+        public static void PlayRandomAudioSource(AudioSource[] sources) => PlayRandomAudioSource(sources.ToList());
 
         public static float AbsDist(Vector3 v1, Vector3 v2)
         {
             return Mathf.Abs(Vector3.Distance(v1, v2));
+        }
+
+        public static T GetRandomFromList<T>(List<T> list)
+        {
+            if (list == null || list.Count == 0) return default;
+            int i = Random.Range(0, list.Count);
+            return list[i];
+        }
+
+        public static T GetRandomFromList<T>(IList<T> array)
+        {
+            if (array == null) return default;
+            return GetRandomFromList(array.ToList());
+        }
+
+        public static void DelayedExecute(float delay, System.Action action, MonoBehaviour handler)
+        {
+            handler.StartCoroutine(DelayedExecuteIE(delay, action));
+        }
+
+        private static IEnumerator DelayedExecuteIE(float delay, System.Action action)
+        {
+            yield return new WaitForSeconds(delay);
+            action.Invoke();
         }
     }
 }

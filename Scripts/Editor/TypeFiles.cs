@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using ThunderRoad;
 
 namespace GhettosFirearmSDKv2
 {
@@ -11,17 +12,20 @@ namespace GhettosFirearmSDKv2
 
         public static TextAsset AttachmentTypesFile()
         {
-            return (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/FirearmSDKv2/Types/CommonAttachmentTypes.json", typeof(TextAsset));
+            TextAsset ta = Catalog.EditorLoad<TextAsset>("FirearmSDK.AttachmentTypes");
+            return ta;
         }
 
         public static TextAsset CalibersFile()
         {
-            return (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/FirearmSDKv2/Types/Calibers.json", typeof(TextAsset));
+            TextAsset ta = Catalog.EditorLoad<TextAsset>("FirearmSDK.Calibers");
+            return ta;
         }
 
         public static TextAsset ExplosiveEffectsFile()
         {
-            return (TextAsset)AssetDatabase.LoadAssetAtPath("Assets/FirearmSDKv2/Types/ExplosiveEffects.json", typeof(TextAsset));
+            TextAsset ta = Catalog.EditorLoad<TextAsset>("FirearmSDK.ExplosiveEffects");
+            return ta;
         }
 #endif
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace GhettosFirearmSDKv2
 {
@@ -9,6 +10,6 @@ namespace GhettosFirearmSDKv2
     {
         public GameObject SelectionOutline;
         public Button button;
-        public Text textName;
+        public TextMeshProUGUI textName;
     }
 }

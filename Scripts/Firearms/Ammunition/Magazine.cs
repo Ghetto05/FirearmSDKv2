@@ -9,10 +9,13 @@ namespace GhettosFirearmSDKv2
     [AddComponentMenu("Firearm SDK v2/Ammunition/Magazine")]
     public class Magazine : MonoBehaviour
     {
+        public bool overrideLastAmmoItemWithInsertedCartridge = false;
+        public bool ejectOnLastRoundFired = false;
         public bool infinite = false;
         public string magazineType;
         public string caliber;
         public List<string> alternateCalibers;
+        public bool forceCorrectCaliber = false;
         public Stack<Cartridge> cartridges;
         public int maximumCapacity;
         public bool canEjectRounds = true;
@@ -35,6 +38,7 @@ namespace GhettosFirearmSDKv2
         public bool hasOverrideLoad;
         public Item overrideItem;
         public List<Collider> colliders;
+        public List<GameObject> feederObjects;
 
         [EasyButtons.Button]
         public void FixPreview()

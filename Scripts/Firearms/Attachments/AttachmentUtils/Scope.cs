@@ -15,7 +15,7 @@ namespace GhettosFirearmSDKv2
         public float noZoomMagnification;
         public bool hasZoom = true;
         public Handle controllingHandle;
-        public Item connectedItem;
+        public Firearm connectedFirearm;
         public Attachment connectedAtatchment;
         public List<float> MagnificationLevels;
         public Transform Selector; 

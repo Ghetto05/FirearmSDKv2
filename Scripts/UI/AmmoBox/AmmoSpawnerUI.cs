@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ThunderRoad;
 using UnityEngine.UI;
+using TMPro;
 
 namespace GhettosFirearmSDKv2
 {
@@ -26,7 +27,7 @@ namespace GhettosFirearmSDKv2
         public GameObject caliberPref;
         public GameObject variantPref;
         [Space]
-        public Text description;
+        public TextMeshProUGUI description;
 
         public void SetupCalibersList()
         {

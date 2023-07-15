@@ -1,7 +1,13 @@
 {
     "array": [
-        "ExplosionSmall_Ghetto05_FirearmSDKv2",
-        "ExplosionMedium_Ghetto05_FirearmSDKv2",
-        "ExplosionLarge_Ghetto05_FirearmSDKv2"
+        "Ghetto05.FirearmSDKv2.Explosions.Grenade.05m",
+        "Ghetto05.FirearmSDKv2.Explosions.Grenade.1m",
+        "Ghetto05.FirearmSDKv2.Explosions.Grenade.2m",
+        "Ghetto05.FirearmSDKv2.Explosions.Sparky.05m",
+        "Ghetto05.FirearmSDKv2.Explosions.Sparky.1m",
+        "Ghetto05.FirearmSDKv2.Explosions.Sparky.2m",
+        "Ghetto05.FirearmSDKv2.Explosions.Flashbang.1m",
+        "Ghetto05.FirearmSDKv2.Explosions.BPatrone",
+        "Ghetto05.FirearmSDKv2.Explosions.Practice"
     ]
 }
