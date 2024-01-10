@@ -14,7 +14,7 @@ namespace GhettosFirearmSDKv2
             for (int i = 0; i < parent.childCount; i++)
             {
                 Transform t = parent.GetChild(i);
-                t.localEulerAngles = new Vector3(t.localEulerAngles.x - 90f, t.localEulerAngles.y, t.localEulerAngles.z);
+                t.localEulerAngles = new Vector3(t.localEulerAngles.x + 90f, t.localEulerAngles.y, t.localEulerAngles.z);
                 t.localScale = Vector3.one;
             }
         }

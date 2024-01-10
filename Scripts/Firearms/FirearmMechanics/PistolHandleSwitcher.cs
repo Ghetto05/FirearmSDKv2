@@ -10,5 +10,6 @@ namespace GhettosFirearmSDKv2
         public Handle mainHandle;
         public Handle secondaryHandle;
         public Firearm firearm;
+        public Attachment attachment;
     }
 }

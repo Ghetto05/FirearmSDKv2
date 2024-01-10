@@ -96,7 +96,7 @@ namespace GhettosFirearmSDKv2
                 data.damagePerProjectile = EditorGUILayout.FloatField("Projectile damage", data.damagePerProjectile);
                 data.forcePerProjectile = EditorGUILayout.FloatField("Projectile force", data.forcePerProjectile);
                 data.slicesBodyParts = EditorGUILayout.Toggle("Slice off hit body parts?", data.slicesBodyParts);
-                data.enoughToIncapitate = EditorGUILayout.Toggle("Strong enough to incapitate?", data.enoughToIncapitate);
+                data.enoughToIncapitate = EditorGUILayout.Toggle("Strong enough to incapacitate?", data.enoughToIncapitate);
                 data.lethalHeadshot = EditorGUILayout.Toggle("Is headshot guaranteed kill?", data.lethalHeadshot);
                 data.forceDestabilize = EditorGUILayout.Toggle("Always destabilize hit creature?", data.forceDestabilize);
                 data.penetrationPower = (ProjectileData.PenetrationLevels)EditorGUILayout.EnumPopup("Penetration power", data.penetrationPower);

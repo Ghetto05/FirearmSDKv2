@@ -20,7 +20,6 @@ namespace GhettosFirearmSDKv2
         public List<AudioSource> ejectSounds;
         public List<AudioSource> insertSounds;
 
-        public List<Handle> foregripHandles;
         public Rigidbody rb;
         public Transform barrel;
         public Transform closedPosition;

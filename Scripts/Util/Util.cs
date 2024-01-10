@@ -11,6 +11,11 @@ namespace GhettosFirearmSDKv2
 {
     public class Util
     {
+        public static Vector3 RandomCartridgeRotation()
+        {
+            return new Vector3(0, 0, Random.Range(0f, 360f));
+        }
+        
         public static void FixAudioSources(GameObject gameObject)
         {
             foreach (AudioSource a in gameObject.GetComponentsInChildren<AudioSource>())
@@ -114,6 +119,24 @@ namespace GhettosFirearmSDKv2
         {
             yield return new WaitForSeconds(delay);
             action.Invoke();
+        }
+        
+        /*
+         * Function to normalize angles to be within [-180, 180]
+        */
+        public static float NormalizeAngle(float angle)
+        {
+            while (angle > 180f)
+            {
+                angle -= 360f;
+            }
+
+            while (angle < -180f)
+            {
+                angle += 360f;
+            }
+
+            return angle;
         }
     }
 }

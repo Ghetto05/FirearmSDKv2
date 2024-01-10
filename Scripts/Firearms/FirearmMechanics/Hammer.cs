@@ -16,6 +16,8 @@ namespace GhettosFirearmSDKv2
         public List<AudioSource> hitSounds;
         public List<AudioSource> cockSounds;
         public bool hasDecocker = false;
+        public bool allowManualCock = false;
+        public bool allowCockUncockWhenSafetyIsOn = true;
 
         private void Awake()
         {

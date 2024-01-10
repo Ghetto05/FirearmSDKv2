@@ -78,11 +78,16 @@ namespace GhettosFirearmSDKv2
             item = this.gameObject.GetComponent<Item>();
             item.holderPoint.localEulerAngles = new Vector3(0, 0, 90);
 
-            if (HasAnchor("Ghetto's Firearm SDK V2 vice anchor"))
+            if (!HasAnchor("HolderRackTopAnchor"))
             {
-
+                Transform trans = new GameObject("HolderRackTopAnchor").transform;
+                trans.parent = this.transform;
+                trans.localPosition = Vector3.zero;
+                trans.localEulerAngles = Vector3.zero;
+                Item.HolderPoint holPoint = new Item.HolderPoint(trans, "HolderRackTopAnchor");
+                item.additionalHolderPoints.Add(holPoint);
             }
-            else
+            if (!HasAnchor("Ghetto's Firearm SDK V2 vice anchor"))
             {
                 Transform trans = new GameObject("Ghetto's Firearm SDK V2 vice anchor").transform;
                 trans.parent = this.transform;
@@ -91,17 +96,13 @@ namespace GhettosFirearmSDKv2
                 Item.HolderPoint holPoint = new Item.HolderPoint(trans, "Ghetto's Firearm SDK V2 vice anchor");
                 item.additionalHolderPoints.Add(holPoint);
             }
-            if (HasAnchor("HolderRackTopAnchor"))
+            if (!HasAnchor("Ghetto's Firearm SDK V2 gun case anchor"))
             {
-
-            }
-            else
-            {
-                Transform trans = new GameObject("HolderRackTopAnchor").transform;
+                Transform trans = new GameObject("Ghetto's Firearm SDK V2 gun case anchor").transform;
                 trans.parent = this.transform;
                 trans.localPosition = Vector3.zero;
                 trans.localEulerAngles = Vector3.zero;
-                Item.HolderPoint holPoint = new Item.HolderPoint(trans, "HolderRackTopAnchor");
+                Item.HolderPoint holPoint = new Item.HolderPoint(trans, "Ghetto's Firearm SDK V2 gun case anchor");
                 item.additionalHolderPoints.Add(holPoint);
             }
             item.preview.transform.localEulerAngles = new Vector3(8.88f, -115.118f, 0f);
@@ -117,6 +118,10 @@ namespace GhettosFirearmSDKv2
                 mademuzzle.localPosition = Vector3.zero;
                 mademuzzle.localEulerAngles = Vector3.zero;
                 hitscanMuzzle = mademuzzle;
+            }
+            if (TryGetComponent(out Item i))
+            {
+                if (string.IsNullOrWhiteSpace(i.itemId)) i.itemId = gameObject.name;
             }
         }
 #endif

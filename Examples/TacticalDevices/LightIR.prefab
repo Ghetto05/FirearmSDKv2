@@ -194,6 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671b871cca61a1246875d679635046bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  physicalSwitch: 0
+  tacSwitch: 1
   lights: {fileID: 3298264863401403693}
   item: {fileID: 0}
   attachment: {fileID: 0}

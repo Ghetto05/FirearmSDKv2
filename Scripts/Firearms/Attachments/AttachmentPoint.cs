@@ -18,6 +18,8 @@ namespace GhettosFirearmSDKv2
         public Attachment currentAttachment;
         public string defaultAttachment;
         public GameObject disableOnAttach;
+        public GameObject enableOnAttach;
+        public List<Collider> attachColliders;
 
 #if UNITY_EDITOR
         [Button]

@@ -9,7 +9,10 @@ namespace GhettosFirearmSDKv2
     {
         public Attachment attachment;
         public Collider newCollider;
+        public Transform newMount;
         [HideInInspector]
         public Collider oldCollider;
+        [HideInInspector]
+        public Transform oldMount;
     }
 }

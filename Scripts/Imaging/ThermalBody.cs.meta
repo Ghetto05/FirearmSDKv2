@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: decec22852ad7534681e1bdc32dca3b3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rig: {instanceID: 0}
+  - standardMaterial: {fileID: 2100000, guid: cdb1a1c7bb8e7fc488903f6ce6800a18, type: 2}
+  - redHotMaterial: {fileID: 2100000, guid: 2d7ad9ac41a57f940a5eaaafdf88dde8, type: 2}
+  - whiteHotMaterial: {fileID: 2100000, guid: 62257045a7e6a9244b2d80eeab897fcb, type: 2}
+  - blackHotMaterial: {fileID: 2100000, guid: a6c132d8ceec0ca47be2debab5385e1c, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

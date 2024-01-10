@@ -7,6 +7,8 @@ namespace GhettosFirearmSDKv2
     [AddComponentMenu("Firearm SDK v2/Bolt assemblies/Automatic bolt")]
     public class BoltSemiautomatic : BoltBase
     {
+        public bool isOpenBolt = false;
+        [Space]
         public List<AttachmentPoint> onBoltPoints;
         [Space]
         public bool locksWhenSafetyIsOn = false;
@@ -14,6 +16,7 @@ namespace GhettosFirearmSDKv2
         public bool hasBoltcatch = true;
         public bool hasBoltCatchReleaseControl = true;
         public bool onlyCatchIfManuallyPulled = false;
+        public bool chargingHandleLocksBack = false;
         public bool lockIfNoMagazineFound = false;
         public BoltReleaseButton[] releaseButtons;
         [Space]
@@ -43,16 +46,18 @@ namespace GhettosFirearmSDKv2
         public AudioSource[] pullSoundsHeld;
         public AudioSource[] rackSoundsNotHeld;
         public AudioSource[] pullSoundsNotHeld;
+        public AudioSource[] catchOnSearSounds;
         [Space]
         public float roundEjectForce = 0.6f;
         public Transform roundEjectDir;
         public Transform roundEjectPoint;
         [Space]
         public Hammer hammer;
+        public bool cockHammerOnTriggerPull;
 
         private void Awake()
         {
-            InitializeJoint(false);
+            //InitializeJoint(false);
         }
 
         private void InitializeJoint(bool lockedBack, bool safetyLocked = false)
@@ -101,6 +106,116 @@ namespace GhettosFirearmSDKv2
             {
                 rigidBody.transform.localPosition = startPoint.localPosition;
                 rigidBody.transform.localRotation = startPoint.localRotation;
+            }
+        }
+
+        [EasyButtons.Button]
+        public void SetupDefault()
+        {
+            if (rigidBody == null)
+            {
+                GameObject objRB = new GameObject();
+                objRB.transform.SetParent(transform);
+                objRB.transform.localPosition = Vector3.zero;
+                objRB.transform.localEulerAngles = Vector3.zero;
+                objRB.name = "RB";
+                Rigidbody rrb = objRB.AddComponent<Rigidbody>();
+                ConstantForce cf = objRB.AddComponent<ConstantForce>();
+                cf.relativeForce = Vector3.forward * 100;
+                force = cf;
+                rrb.useGravity = false;
+                rrb.angularDrag = 0f;
+                rigidBody = rrb;
+
+                GameObject objHandle = new GameObject();
+                objHandle.transform.SetParent(objRB.transform);
+                objHandle.name = "BoltHandle";
+                objHandle.transform.localPosition = Vector3.zero;
+                objHandle.transform.localEulerAngles = Vector3.zero;
+                GhettoHandle han = objHandle.AddComponent<GhettoHandle>();
+                han.customRigidBody = rigidBody;
+                han.type = GhettoHandle.HandleType.Bolt;
+                han.CheckOrientations();
+            }
+
+            if (bolt == null)
+            {
+                GameObject objObj = new GameObject();
+                objObj.transform.SetParent(transform);
+                objObj.transform.localPosition = Vector3.zero;
+                objObj.transform.localEulerAngles = Vector3.zero;
+                bolt = objObj.transform;
+                objObj.name = "Obj";
+            }
+
+            if (startPoint == null)
+            {
+                GameObject objStart = new GameObject();
+                objStart.transform.SetParent(transform);
+                objStart.transform.localPosition = Vector3.zero;
+                objStart.transform.localEulerAngles = Vector3.zero;
+                startPoint = objStart.transform;
+                objStart.name = "Start";
+            }
+
+            if (endPoint == null)
+            {
+                GameObject objEnd = new GameObject();
+                objEnd.transform.SetParent(transform);
+                objEnd.transform.localPosition = Vector3.zero;
+                objEnd.transform.localEulerAngles = Vector3.zero;
+                endPoint = objEnd.transform;
+                objEnd.name = "End";
+            }
+
+            if (catchPoint == null)
+            {
+                GameObject objCatch = new GameObject();
+                objCatch.transform.SetParent(transform);
+                objCatch.transform.localPosition = Vector3.zero;
+                objCatch.transform.localEulerAngles = Vector3.zero;
+                catchPoint = objCatch.transform;
+                objCatch.name = "Catch";
+            }
+
+            if (roundLoadPoint == null)
+            {
+                GameObject objLoad = new GameObject();
+                objLoad.transform.SetParent(transform);
+                objLoad.transform.localPosition = Vector3.zero;
+                objLoad.transform.localEulerAngles = Vector3.zero;
+                roundLoadPoint = objLoad.transform;
+                objLoad.name = "Load";
+            }
+
+            if (hammerCockPoint == null)
+            {
+                GameObject objCock = new GameObject();
+                objCock.transform.SetParent(transform);
+                objCock.transform.localPosition = Vector3.zero;
+                objCock.transform.localEulerAngles = Vector3.zero;
+                hammerCockPoint = objCock.transform;
+                objCock.name = "Cock";
+            }
+
+            if (roundMount == null)
+            {
+                GameObject objRoundMount = new GameObject();
+                objRoundMount.transform.SetParent(bolt);
+                objRoundMount.transform.localPosition = Vector3.zero;
+                objRoundMount.transform.localEulerAngles = Vector3.zero;
+                roundMount = objRoundMount.transform;
+                objRoundMount.name = "RoundMount";
+            }
+
+            if (roundEjectDir == null)
+            {
+                GameObject objEjectDir = new GameObject();
+                objEjectDir.transform.SetParent(bolt);
+                objEjectDir.transform.localPosition = Vector3.zero;
+                objEjectDir.transform.localEulerAngles = Vector3.zero;
+                roundEjectDir = objEjectDir.transform;
+                objEjectDir.name = "EjectDir";
             }
         }
     }

@@ -12,7 +12,8 @@ namespace GhettosFirearmSDKv2
             TriggerPull,
             TriggerRelease,
             AlternateUsePress,
-            AlternateUseRelease
+            AlternateUseRelease,
+            None
         }
 
         public Actions toggleAction;
@@ -24,5 +25,6 @@ namespace GhettosFirearmSDKv2
         public string toState2Anim;
         public AudioSource[] toState1Sounds;
         public AudioSource[] toState2Sounds;
+        public Animator animator;
     }
 }

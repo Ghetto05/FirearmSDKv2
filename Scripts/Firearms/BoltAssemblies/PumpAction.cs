@@ -13,7 +13,6 @@ namespace GhettosFirearmSDKv2
         public Transform startPoint;
         public Transform endPoint;
         public Transform hammerCockPoint;
-        public Transform roundEjectPoint;
         public Transform roundLoadPoint;
         public List<AttachmentPoint> onBoltPoints;
         [HideInInspector]
@@ -26,6 +25,7 @@ namespace GhettosFirearmSDKv2
         public Transform roundEjectDir;
         public Transform roundMount;
         public Transform roundReparent;
+        public Transform roundEjectPoint;
         [HideInInspector]
         public Cartridge loadedCartridge;
         public Hammer hammer;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using ThunderRoad;
+using System.Collections.Generic;
 
 namespace GhettosFirearmSDKv2
 {
@@ -18,5 +19,6 @@ namespace GhettosFirearmSDKv2
         public bool ejectOnFire = false;
 
         public Hammer hammer;
+        public List<Lock> locks;
     }
 }

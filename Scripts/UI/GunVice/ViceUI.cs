@@ -9,6 +9,7 @@ namespace GhettosFirearmSDKv2
     public class ViceUI : MonoBehaviour
     {
         public bool AlwaysFrozen;
+        public bool allowFreeze = true;
 
         public Firearm currentFirearm;
 

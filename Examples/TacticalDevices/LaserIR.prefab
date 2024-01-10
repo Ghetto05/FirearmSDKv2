@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7727026395177107360}
   m_Father: {fileID: 0}
@@ -45,12 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4273b44e4dc3b43900f056f34fadf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  physicalSwitch: 0
+  tacSwitch: 1
   sourceObject: {fileID: 0}
   source: {fileID: 6858385729307742172}
   endPointObject: {fileID: 0}
   cylinderRoot: {fileID: 7727026395177107360}
   range: 100
   activeByDefault: 0
+  distanceDisplay: {fileID: 0}
+  item: {fileID: 0}
+  attachment: {fileID: 0}
 --- !u!114 &8060936568137294829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderType: 0
   objects:
-  - {fileID: 7199411869618636908}
+  - {fileID: 4327898378665964913}
 --- !u!1 &4327898378665964913
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +100,7 @@ Transform:
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071069}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 0.0012478452, y: 0.5, z: 0.0012478451}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7727026395177107360}
   m_RootOrder: 0
@@ -117,6 +124,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -173,6 +181,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1359179739408963536}
   m_Father: {fileID: 6858385729307742172}

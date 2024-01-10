@@ -16,5 +16,7 @@ namespace GhettosFirearmSDKv2
         public Transform AttachmentFirearmPosition;
         public AudioSource switchSound;
         public FirearmBase.FireModes[] firemodes;
+        public Hammer hammer;
+        public bool allowSwitchingModeIfHammerIsUncocked = true;
     }
 }

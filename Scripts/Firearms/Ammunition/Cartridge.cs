@@ -32,12 +32,24 @@ namespace GhettosFirearmSDKv2
         public ProjectileData data;
         [HideInInspector]
         public bool fired = false;
+        [HideInInspector]
+        public bool loaded = false;
+        [HideInInspector]
+        public Item item;
         public ParticleSystem detonationParticle;
         public AudioSource[] detonationSounds;
         public ParticleSystem additionalMuzzleFlash;
         public List<Collider> colliders;
         public Transform cartridgeFirePoint;
         public UnityEvent onFireEvent;
+
+        public void ToggleCollision(bool active)
+        {
+            foreach (Collider c in colliders)
+            {
+                c.enabled = active;
+            }
+        }
 
         [Button]
         public void FindAllCollider()

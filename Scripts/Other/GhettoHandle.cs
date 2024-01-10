@@ -49,7 +49,7 @@ namespace GhettosFirearmSDKv2
             newHandle.touchCenter = originalHandle.touchCenter;
             newHandle.touchCollider = originalHandle.touchCollider;
             newHandle.touchRadius = originalHandle.touchRadius;
-            newHandle.updatePosesWhenWeightChanges = originalHandle.updatePosesWhenWeightChanges;
+            newHandle.updatePosesAutomatically = originalHandle.updatePosesAutomatically;
         }
 
         public static GhettoHandle ReplaceHandle(Handle handle)

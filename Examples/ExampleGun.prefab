@@ -563,6 +563,7 @@ MonoBehaviour:
   pulledPosition: {fileID: 6723329530781985004}
   pullSound: {fileID: 0}
   resetSound: {fileID: 0}
+  onTriggerWeight: 0.8
 --- !u!1 &1060303447935824610
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,6 +766,11 @@ MonoBehaviour:
   currentMagazine: {fileID: 0}
   mountCurrentMagazine: 0
   spawnMagazineOnAwake: 1
+  ejectDir: {fileID: 0}
+  ejectForce: 0.3
+  tryReleasingBoltIfMagazineIsInserted: 0
+  onlyAllowEjectionWhenBoltIsPulled: 0
+  lockedState: 0
 --- !u!1 &1931862927989756094
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,8 +998,11 @@ MonoBehaviour:
   SemiPosition: {fileID: 6127827125587564461}
   BurstPosition: {fileID: 0}
   AutoPosition: {fileID: 0}
+  AttachmentFirearmPosition: {fileID: 0}
   switchSound: {fileID: 0}
   firemodes: 0100000000000000
+  hammer: {fileID: 0}
+  allowSwitchingModeIfHammerIsUncocked: 1
 --- !u!1 &2577067124272210682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1696,10 @@ MonoBehaviour:
   cockedPosition: {fileID: 6637657062212675795}
   hitSounds:
   - {fileID: 0}
+  cockSounds: []
+  hasDecocker: 0
+  allowManualCock: 0
+  allowCockUncockWhenSafetyIsOn: 1
 --- !u!1 &4674607360795889467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,10 +1949,14 @@ MonoBehaviour:
   firearm: {fileID: 572993469556709921}
   fireOnTriggerPress: 1
   reciprocatingBarrel: {fileID: 0}
+  isOpenBolt: 0
   onBoltPoints: []
   locksWhenSafetyIsOn: 0
   hasBoltcatch: 1
   hasBoltCatchReleaseControl: 1
+  onlyCatchIfManuallyPulled: 0
+  chargingHandleLocksBack: 0
+  lockIfNoMagazineFound: 0
   releaseButtons: []
   rigidBody: {fileID: 2311071062943005939}
   bolt: {fileID: 4166904344177613534}
@@ -1966,10 +1983,12 @@ MonoBehaviour:
   - {fileID: 0}
   pullSoundsNotHeld:
   - {fileID: 0}
+  catchOnSearSounds: []
   roundEjectForce: 0.6
   roundEjectDir: {fileID: 6771507678571982025}
   roundEjectPoint: {fileID: 0}
   hammer: {fileID: 0}
+  cockHammerOnTriggerPull: 0
 --- !u!1 &5351501411959984055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,6 +2325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimTransform: {fileID: 0}
+  setUpForHandPose: 0
   item: {fileID: 5426471763958630356}
   disableMainFireHandle: 0
   additionalTriggerHandles: []
@@ -2327,6 +2347,7 @@ MonoBehaviour:
   longPressTime: 0.5
   recoilModifier: 1
   countingForLongpress: 0
+  defaultAmmoItem: 
   attachmentPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -2399,6 +2420,7 @@ MonoBehaviour:
   orientationDefaultRight: {fileID: 5757840166135513077}
   orientationDefaultLeft: {fileID: 3281279738934162701}
   releaseHandle: {fileID: 0}
+  activateHandle: {fileID: 0}
   silentGrab: 0
   forceAutoDropWhenGrounded: 0
   ignoreClimbingForceOverride: 0
@@ -2411,6 +2433,7 @@ MonoBehaviour:
   slideBehavior: 0
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
+  updatePosesAutomatically: 0
   allowedOrientations: []
   redirectControllerAxis: 0
   controllerAxisOutputX:
@@ -3021,6 +3044,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc60554697977c045909869297f8f009, type: 3}
+  m_Script: {fileID: 11500000, guid: c433c9d921d8d604f9d1d93f504627f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -13,5 +13,8 @@ namespace GhettosFirearmSDKv2
 
         private string originalCaliber;
         public string newCaliber;
+
+        private string originalDefaultAmmo;
+        public string newDefaultAmmo;
     }
 }

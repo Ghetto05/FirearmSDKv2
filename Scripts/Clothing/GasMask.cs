@@ -6,6 +6,8 @@ namespace GhettosFirearmSDKv2
 {
     public class GasMask : MonoBehaviour
     {
+        public AudioSource breathingLoop;
+
         private void Update()
         { }
     }
