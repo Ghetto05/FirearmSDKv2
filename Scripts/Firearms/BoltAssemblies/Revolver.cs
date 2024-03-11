@@ -20,6 +20,10 @@ namespace GhettosFirearmSDKv2
         [Space]
         public Transform foldClosedPosition;
         public Transform foldOpenedPosition;
+        [Space]
+        public Transform latchAxis;
+        public Transform latchClosedPosition;
+        public Transform latchOpenedPosition;
 
         [Space]
         [Header("ROTATE")]
@@ -46,6 +50,7 @@ namespace GhettosFirearmSDKv2
         public float triggerPull;
         public List<AudioSource> triggerPullSound;
         public List<AudioSource> triggerResetSound;
+        public float onTriggerWeight = 0.8f;
 
         [HideInInspector]
         public bool cocked;
@@ -54,6 +59,7 @@ namespace GhettosFirearmSDKv2
         [Space]
         [Header("HAMMER")]
         public bool singleActionOnly = false;
+        public bool pullHammerWhenOpened = false;
         public Transform hammerAxis;
         public Transform hammerIdlePosition;
         public Transform hammerCockedPosition;
@@ -70,6 +76,9 @@ namespace GhettosFirearmSDKv2
         public List<Transform> mountPoints;
         public List<Collider> loadColliders;
         private Cartridge[] loadedCartridges;
+        public Transform ejectorRoot;
+        public Transform ejectorStart;
+        public Transform ejectorEnd;
 
         [Space]
         [Header("AUDIO")]
@@ -243,11 +252,6 @@ namespace GhettosFirearmSDKv2
             rotateJoint.axis = rotatingAxis;
             rotateJoint.useLimits = closed;
             rotateJoint.limits = new JointLimits() { min = 0f, max = 0f };
-        }
-
-        public static Vector3 GrandparentLocalPosition(Transform child, Transform grandparent)
-        {
-            return grandparent.InverseTransformPoint(child.position);
         }
     }
 }

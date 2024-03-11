@@ -41,5 +41,13 @@ namespace GhettosFirearmSDKv2
             Auto,
             AttachmentFirearm
         }
+
+        public void OnCollisionEnter(Collision collision)
+        {
+            OnCollisionEvent?.Invoke(collision);
+        }
+
+        public delegate void OnCollision(Collision collision);
+        public event OnCollision OnCollisionEvent;
     }
 }

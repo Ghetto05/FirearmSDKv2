@@ -8,6 +8,7 @@ namespace GhettosFirearmSDKv2
     [AddComponentMenu("Firearm SDK v2/Bolt assemblies/Pump action")]
     public class PumpAction : BoltBase
     {
+        public bool actsAsRelay;
         public Rigidbody rb;
         public Transform bolt;
         public Transform startPoint;

@@ -40,6 +40,11 @@ namespace GhettosFirearmSDKv2
         public Transform lockLockedPosition;
         public Transform lockUnlockedPosition;
 
+        public Transform ejectorAxis;
+        public Transform ejectorClosedPosition;
+        public Transform ejectorOpenedPosition;
+        public float ejectorMoveStartPercentage = 0.8f;
+
         public enum Axes
         {
             X,

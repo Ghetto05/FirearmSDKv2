@@ -16,6 +16,20 @@ namespace GhettosFirearmSDKv2
             return new Vector3(0, 0, Random.Range(0f, 360f));
         }
         
+        public static Vector3 RandomRotation()
+        {
+            return new Vector3(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
+        }
+        
+        public static void RandomizeZRotation(Transform target)
+        {
+            // Generate a random angle
+            float randomAngle = Random.Range(0f, 360f);
+
+            // Apply rotation around the z-axis
+            target.Rotate(0f, 0f, randomAngle, Space.Self);
+        }
+        
         public static void FixAudioSources(GameObject gameObject)
         {
             foreach (AudioSource a in gameObject.GetComponentsInChildren<AudioSource>())

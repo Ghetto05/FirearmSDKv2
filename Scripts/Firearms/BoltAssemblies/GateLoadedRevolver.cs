@@ -42,6 +42,8 @@ namespace GhettosFirearmSDKv2
         private ConfigurableJoint ejectorJoint;
         public float ejectForce;
         public Transform ejectDir;
+        public Transform springRoot;
+        public Vector3 springTargetScale = Vector3.one;
 
         [Header("Audio")]
         public List<AudioSource> insertSounds;

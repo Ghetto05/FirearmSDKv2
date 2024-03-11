@@ -42,7 +42,6 @@ namespace GhettosFirearmSDKv2
         public AudioSource CycleUpSound;
         public AudioSource CycleDownSound;
         int currentIndex;
-        float baseFov;
 
         [EasyButtons.Button]
         public void UpdateZoom()
@@ -53,7 +52,6 @@ namespace GhettosFirearmSDKv2
 
         private void Start()
         {
-            baseFov = x1Zoom;
             RenderTexture rt = new RenderTexture(1024, 1024, 1, UnityEngine.Experimental.Rendering.DefaultFormat.HDR);
             rt.graphicsFormat = UnityEngine.Experimental.Rendering.GraphicsFormat.R16G16B16A16_UNorm;
             cam.targetTexture = rt;
@@ -63,7 +61,6 @@ namespace GhettosFirearmSDKv2
 
         private void Settings_LevelModule_OnValueChangedEvent()
         {
-            baseFov = x1Zoom;
             if (hasZoom) SetZoom();
             else SetZoomNoZoomer(noZoomMagnification);
         }
@@ -134,15 +131,25 @@ namespace GhettosFirearmSDKv2
 
         public void SetZoomNoZoomer(float zoom)
         {
-            var factor = 2.0f * Mathf.Tan(0.5f * baseFov * Mathf.Deg2Rad);
-            var zoomedFOV = 2.0f * Mathf.Atan(factor / (2.0f * zoom)) * Mathf.Rad2Deg;
-            cam.fieldOfView = zoomedFOV;
+            float factor = 2.0f * Mathf.Tan(0.5f * 20 /* from firearm settings */ * Mathf.Deg2Rad);
+            float fov = 2.0f * Mathf.Atan(factor / (2.0f * zoom)) * Mathf.Rad2Deg;
+            
+            cam.fieldOfView = fov;
             foreach (Camera c in additionalCameras)
             {
-                c.fieldOfView = zoomedFOV;
+                c.fieldOfView = fov;
             }
-            lens.material.SetTextureScale("_BaseMap", Vector2.one * GetScale());
-            lens.material.SetTextureOffset("_BaseMap", Vector3.one * ((1 - GetScale()) / 2));
+            UpdateRenderers();
+        }
+        
+        public void UpdateRenderers()
+        {
+            foreach (MeshRenderer l in lenses)
+            {
+                l.materials[materialIndex].SetTexture("_BaseMap", cam.targetTexture);
+                l.materials[materialIndex].SetTextureScale("_BaseMap", Vector2.one * GetScale());
+                l.materials[materialIndex].SetTextureOffset("_BaseMap", Vector3.one * ((1 - GetScale()) / 2));
+            }
         }
     }
 }

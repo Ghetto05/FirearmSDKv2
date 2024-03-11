@@ -27,6 +27,12 @@ namespace GhettosFirearmSDKv2
             TextAsset ta = Catalog.EditorLoad<TextAsset>("FirearmSDK.ExplosiveEffects");
             return ta;
         }
+
+        public static TextAsset CountriesFile()
+        {
+            TextAsset ta = Catalog.EditorLoad<TextAsset>("FirearmSDK.Countries");
+            return ta;
+        }
 #endif
     }
 }

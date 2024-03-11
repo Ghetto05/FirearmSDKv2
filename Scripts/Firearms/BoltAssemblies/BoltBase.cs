@@ -6,9 +6,11 @@ namespace GhettosFirearmSDKv2
 {
     public class BoltBase : MonoBehaviour
     {
+        public int boltIndex = -1;
         public FirearmBase firearm;
         public bool fireOnTriggerPress = true;
         public ReciprocatingBarrel reciprocatingBarrel;
+        public ParticleSystem[] breachSmokeEffects;
 
         public virtual void TryFire()
         {

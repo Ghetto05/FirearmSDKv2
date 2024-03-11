@@ -16,7 +16,8 @@ namespace GhettosFirearmSDKv2
         {
             Attachment,
             Caliber,
-            ExplosiveEffect
+            ExplosiveEffect,
+            Countries
         }
 
         public bool showPopup;
@@ -77,6 +78,11 @@ namespace GhettosFirearmSDKv2
                                 content = TypeFiles.ExplosiveEffectsFile().text;
                             }
                             break;
+                        case TypePicker.Types.Countries:
+                            {
+                                content = TypeFiles.CountriesFile().text;
+                            }
+                            break;
                         default:
                             return;
                     }
@@ -104,6 +110,11 @@ namespace GhettosFirearmSDKv2
                         case TypePicker.Types.ExplosiveEffect:
                             {
                                 content = TypeFiles.ExplosiveEffectsFile().text;
+                            }
+                            break;
+                        case TypePicker.Types.Countries:
+                            {
+                                content = TypeFiles.CountriesFile().text;
                             }
                             break;
                         default:

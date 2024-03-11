@@ -13,6 +13,7 @@ namespace GhettosFirearmSDKv2
         public List<string> handleNames;
         public Transform defaultPosition;
         public List<Transform> positions;
+        public bool parentToPosition;
 
         private void Update()
         {
