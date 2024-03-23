@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +10,8 @@ namespace GhettosFirearmSDKv2
     {
         public HUD hud;
         public Image icon;
-        public Text roundCounter;
-        public Text capacityDisplay;
+        public TextMeshProUGUI roundCounter;
+        public TextMeshProUGUI capacityDisplay;
         public Color defaultColor = Color.white;
         public Color lowColor = Color.red;
         public List<GameObject> additionalDisableObjects;

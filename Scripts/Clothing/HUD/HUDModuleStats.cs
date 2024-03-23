@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace GhettosFirearmSDKv2
 {
@@ -14,17 +12,17 @@ namespace GhettosFirearmSDKv2
         public float fo;
         public Transform focus;
         public float ts;
-        public Text timeSlow;
+        public TextMeshProUGUI timeSlow;
 
-        void Update()
+        private void Update()
         {
             health.localScale = Scale(he, 50f);
             mana.localScale = Scale(ma, 100f);
             focus.localScale = Scale(fo, 100f);
-            timeSlow.text = (ts * 100).ToString() + "%";
+            timeSlow.text = ts * 100 + "%";
         }
 
-        private Vector3 Scale(float current, float max)
+        private static Vector3 Scale(float current, float max)
         {
             return new Vector3(1, current / max, 1);
         }
