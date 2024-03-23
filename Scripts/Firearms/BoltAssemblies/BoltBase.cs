@@ -11,6 +11,7 @@ namespace GhettosFirearmSDKv2
         public bool fireOnTriggerPress = true;
         public ReciprocatingBarrel reciprocatingBarrel;
         public ParticleSystem[] breachSmokeEffects;
+        public float cyclePercentage;
 
         public virtual void TryFire()
         {

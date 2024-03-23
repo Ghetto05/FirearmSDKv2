@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,12 @@ namespace GhettosFirearmSDKv2
         public Transform ejectorClosedPosition;
         public Transform ejectorOpenedPosition;
         public float ejectorMoveStartPercentage = 0.8f;
+        
+        public FiremodeSelector chamberSetSelector;
+        public List<string> editorChamberSets;
+        public List<Trigger> triggers;
+        public List<string> targetHandPoses;
+        public List<string> defaultAmmoItems;
 
         public enum Axes
         {

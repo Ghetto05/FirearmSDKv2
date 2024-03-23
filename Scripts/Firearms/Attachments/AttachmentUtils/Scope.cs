@@ -55,7 +55,7 @@ namespace GhettosFirearmSDKv2
             RenderTexture rt = new RenderTexture(1024, 1024, 1, UnityEngine.Experimental.Rendering.DefaultFormat.HDR);
             rt.graphicsFormat = UnityEngine.Experimental.Rendering.GraphicsFormat.R16G16B16A16_UNorm;
             cam.targetTexture = rt;
-            lens.materials[materialIndex].SetTexture("_BaseMap", rt);
+            if (lens != null) lenses.Add(lens);
             StartCoroutine(delayedLoad());
         }
 
