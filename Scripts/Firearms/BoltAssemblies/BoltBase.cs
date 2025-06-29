@@ -12,6 +12,8 @@ namespace GhettosFirearmSDKv2
         public ReciprocatingBarrel reciprocatingBarrel;
         public ParticleSystem[] breachSmokeEffects;
         public float cyclePercentage;
+        public BoltState state = BoltState.Locked;
+        public BoltState laststate = BoltState.Locked;
 
         public virtual void TryFire()
         {

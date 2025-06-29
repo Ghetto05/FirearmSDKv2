@@ -8,13 +8,5 @@ namespace GhettosFirearmSDKv2
     {
         public List<Joint> joints;
         public Attachment attachment;
-
-        public void Connect()
-        {
-            foreach (Joint joint in joints)
-            {
-                joint.connectedBody = attachment.attachmentPoint.parentFirearm.item.physicBody.rigidBody;
-            }
-        }
     }
 }

@@ -193,11 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671b871cca61a1246875d679635046bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicalSwitch: 0
-  tacSwitch: 1
-  lights: {fileID: 3298264863401403693}
-  item: {fileID: 0}
+  channelName: Flashlight
+  channel: 1
   attachment: {fileID: 0}
+  attachmentManager: {fileID: 0}
+  physicalSwitch: 0
+  lights: {fileID: 3298264863401403693}
 --- !u!1 &4878799705934054532
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,6 +34,17 @@ namespace GhettosFirearmSDKv2
         }
         
         [EasyButtons.Button]
+        public void BuildSingle()
+        {
+            currentCount++;
+            GameObject newObj = Instantiate(linkPrefab, lastNextPosition);
+            newObj.name = linkPrefab.name + currentCount;
+            newObj.SetActive(true);
+            objects.Add(newObj);
+            lastNextPosition = newObj.transform.Find(nextPositionName);
+        }
+        
+        [EasyButtons.Button]
         public void GoToFinalParent()
         {
             foreach (GameObject o in objects)

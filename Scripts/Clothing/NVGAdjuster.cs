@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GhettosFirearmSDKv2
 {
-    public class NVGAdjuster : MonoBehaviour
+    public class NvgAdjuster : MonoBehaviour
     {
         public Transform upwardAxis;
         public Transform forwardAxis;

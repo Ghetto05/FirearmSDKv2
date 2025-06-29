@@ -1,5 +1,4 @@
 using UnityEngine;
-using ThunderRoad;
 
 namespace GhettosFirearmSDKv2
 {
@@ -7,8 +6,6 @@ namespace GhettosFirearmSDKv2
     public class TacLight : TacticalDevice
     {
         public GameObject lights;
-        public Item item;
-        public Attachment attachment;
 
         public void SetActive()
         { }

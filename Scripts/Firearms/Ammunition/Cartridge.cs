@@ -25,6 +25,8 @@ namespace GhettosFirearmSDKv2
 
         public bool disallowDespawn = false;
         public bool keepRotationAtZero = false;
+        public bool forceRotation;
+        public float forceRotationIncrement;
         public GameObject firedOnlyObject;
         public GameObject unfiredOnlyObject;
         public string caliber;
@@ -55,6 +57,9 @@ namespace GhettosFirearmSDKv2
         public void FindAllCollider()
         {
             colliders = this.gameObject.GetComponentsInChildren<Collider>().ToList();
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(gameObject);
+#endif
         }
 
         public void Detonate()

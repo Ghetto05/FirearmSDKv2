@@ -23,6 +23,7 @@ namespace GhettosFirearmSDKv2
 
         public string additionalInformation;
 
+        public bool isInert;
         public bool isHitscan = true;
         public float accuracyMultiplier = 1;
         public float recoil = 20;
@@ -56,6 +57,7 @@ namespace GhettosFirearmSDKv2
         public bool enoughToIncapitate = true;
         public bool lethalHeadshot = true;
         public bool forceDestabilize = false;
+        public float fireDamage;
 
         //temporary knockout
         public bool knocksOutTemporarily = false;

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ThunderRoad;
+using GhettosFirearmSDKv2.Attachments;
 using UnityEngine;
 
 namespace GhettosFirearmSDKv2
@@ -8,10 +8,12 @@ namespace GhettosFirearmSDKv2
     {
         public Firearm firearm;
         public Attachment attachment;
+        public AttachmentManager attachmentManager;
 
         public int slot;
         public string caliber;
         public Collider mountCollider;
+        public ChamberLoader chamberLoader;
 
         public List<AudioSource> roundInsertSounds;
         public List<AudioSource> roundEjectSounds;

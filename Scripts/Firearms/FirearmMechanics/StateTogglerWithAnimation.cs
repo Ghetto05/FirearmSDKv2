@@ -7,16 +7,7 @@ namespace GhettosFirearmSDKv2
 {
     public class StateTogglerWithAnimation : MonoBehaviour
     {
-        public enum Actions
-        {
-            TriggerPull,
-            TriggerRelease,
-            AlternateUsePress,
-            AlternateUseRelease,
-            None
-        }
-
-        public Actions toggleAction;
+        public Interactable.Action toggleAction;
         public Handle handle;
         public Item item;
         public Animation animationPlayer;

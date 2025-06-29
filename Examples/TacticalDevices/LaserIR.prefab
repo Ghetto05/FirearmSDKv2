@@ -46,8 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4273b44e4dc3b43900f056f34fadf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  channelName: IR Laser
+  channel: 1
+  attachment: {fileID: 0}
+  attachmentManager: {fileID: 0}
   physicalSwitch: 0
-  tacSwitch: 1
   sourceObject: {fileID: 0}
   source: {fileID: 6858385729307742172}
   endPointObject: {fileID: 0}
@@ -55,8 +58,6 @@ MonoBehaviour:
   range: 100
   activeByDefault: 0
   distanceDisplay: {fileID: 0}
-  item: {fileID: 0}
-  attachment: {fileID: 0}
 --- !u!114 &8060936568137294829
 MonoBehaviour:
   m_ObjectHideFlags: 0

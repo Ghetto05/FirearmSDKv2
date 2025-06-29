@@ -3,7 +3,11 @@ guid: f060bbcbf5f1ed14d9047f8bb75040ec
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - CylinderMesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  - parentFirearm: {instanceID: 0}
+  - disableOnAttach: {instanceID: 0}
+  - enableOnAttach: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

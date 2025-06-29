@@ -14,6 +14,8 @@ namespace GhettosFirearmSDKv2
         public Transform defaultPosition;
         public List<Transform> positions;
         public bool parentToPosition;
+        public bool foldIfBoltCaught;
+        public BoltSemiautomatic bolt;
 
         private void Update()
         {

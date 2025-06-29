@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GhettosFirearmSDKv2
@@ -16,5 +14,6 @@ namespace GhettosFirearmSDKv2
 
         private string originalDefaultAmmo;
         public string newDefaultAmmo;
+        public MagazineLoad overrideMagazineLoad;
     }
 }

@@ -8,9 +8,10 @@ namespace GhettosFirearmSDKv2
 {
     public class PowderPouch : MonoBehaviour
     {
-        private readonly float Delay = 0.02f; 
-        
+        private readonly float _delay = 0.15f;
+
         public Item item;
+        public Cartridge cartridge;
         public bool opened;
         public Transform source;
         public GameObject grain;
@@ -19,9 +20,12 @@ namespace GhettosFirearmSDKv2
         public Transform lid;
         public Transform lidClosedPosition;
         public Transform lidOpenedPosition;
-        
+
         public AudioSource[] tapSounds;
         public AudioSource[] grainSpawnSounds;
+        public AudioSource grainFlowSound;
+
+        public int content = -1;
 
         private float _lastEject;
 
@@ -62,12 +66,17 @@ namespace GhettosFirearmSDKv2
 
         private void Spawn()
         {
-            if (Time.time - _lastEject > Delay)
+            if (!(Time.time - _lastEject > _delay))
             {
-                GameObject grainIn = Instantiate(grain, source.position, Quaternion.Euler(Util.RandomRotation()));
-                _lastEject = Time.time;
-                grainIn.SetActive(true);
-                Destroy(grainIn, 5f);
+                return;
+            }
+            var grainIn = Instantiate(grain, source.position, Quaternion.Euler(Util.RandomRotation()));
+            _lastEject = Time.time;
+            grainIn.SetActive(true);
+            Destroy(grainIn, 5f);
+            if (content != -1)
+            {
+                content--;
             }
         }
     }

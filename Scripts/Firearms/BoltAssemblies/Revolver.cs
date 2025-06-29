@@ -27,6 +27,7 @@ namespace GhettosFirearmSDKv2
 
         [Space]
         [Header("ROTATE")]
+        public bool rotateWhenReleasingTrigger;
         public Rigidbody rotateBody;
         public Transform rotateAxis;
         public Vector3 rotatingAxis;
@@ -37,6 +38,11 @@ namespace GhettosFirearmSDKv2
         public List<Transform> chamberLocators;
         public List<float> chamberRotations;
         private HingeJoint rotateJoint;
+
+        [Space]
+        [Header("AUTO ROTATE")]
+        public bool autoRotateCylinder;
+        public bool limitCylinderRotation;
 
         [Space]
         [Header("TRIGGER")]
@@ -86,6 +92,7 @@ namespace GhettosFirearmSDKv2
         public List<AudioSource> unlockSounds;
         public List<AudioSource> ejectSounds;
         public List<AudioSource> loadSounds;
+        public List<AudioSource> chamberClickSounds;
 
         bool closed = false;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ThunderRoad;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GhettosFirearmSDKv2
 {
@@ -9,7 +10,8 @@ namespace GhettosFirearmSDKv2
     {
         public Attachment attachment;
         public Transform boltChild;
-        public Transform boltRBChild;
+        [FormerlySerializedAs("boltRBChild")]
+        public Transform boltRbChild;
         public List<GhettoHandle> additionalBoltHandles;
         public bool disableDefaultBoltHandles;
     }

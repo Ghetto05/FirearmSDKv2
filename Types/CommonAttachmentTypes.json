@@ -1,5 +1,6 @@
 {
     "array": [
+        "22lr Muzzle",
         "AR10 Muzzle",
         "AR15 Muzzle",
         "9mm Muzzle",
@@ -68,6 +69,25 @@
         "",
         "AR10 Gas Block",
         "AR10 Long Gas Block",
-        "AR10 Handguard"
+        "AR10 Handguard",
+        "",
+        "Aimpoint ACRO Standard",
+        "Aimpoint CompM4 Standard",
+        "Aimpoint Micro Standard",
+        "C-More Standard",
+        "C-More Railway Standard",
+        "Docter Noblex Standard",
+        "Glock MOS Standard",
+        "HK VP9 Standard",
+        "Holosun ARMS Standard",
+        "Leupold DeltaPoint Standard",
+        "Shield Standard",
+        "S&W M&P 2.0 Standard",
+        "TEK Standard",
+        "Trijicon MRO Standard",
+        "Trijicon RMR Standard",
+        "Trijicon ACOG Standard",
+        "Walther PDP 2.0 Standard",
+        "ROMEO1 PRO"
     ]
 }

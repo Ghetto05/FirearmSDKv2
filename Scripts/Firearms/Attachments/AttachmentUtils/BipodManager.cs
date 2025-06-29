@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
+using GhettosFirearmSDKv2.Attachments;
 using UnityEngine;
-using ThunderRoad;
 
 namespace GhettosFirearmSDKv2
 {
@@ -9,7 +8,9 @@ namespace GhettosFirearmSDKv2
     public class BipodManager : MonoBehaviour
     {
         public Firearm firearm;
+        public AttachmentManager attachmentManager;
         public Attachment attachment;
+        
         public List<Bipod> bipods;
         public List<Transform> groundFollowers;
         public float linearRecoilModifier;

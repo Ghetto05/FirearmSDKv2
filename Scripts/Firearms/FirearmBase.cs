@@ -32,6 +32,8 @@ namespace GhettosFirearmSDKv2
         [HideInInspector]
         public bool countingForLongpress = false;
         public string defaultAmmoItem;
+        public MagazineLoad overrideMagazineLoad;
+        public SaveNodeValueItem SavedAmmoItemData;
 
         public enum FireModes
         {

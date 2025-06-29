@@ -45,14 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4273b44e4dc3b43900f056f34fadf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  channelName: Laser
+  channel: 1
   attachment: {fileID: 0}
+  attachmentManager: {fileID: 0}
+  physicalSwitch: 0
   sourceObject: {fileID: 0}
   source: {fileID: 6858385729307742172}
   endPointObject: {fileID: 0}
   cylinderRoot: {fileID: 7727026395177107360}
   range: 100
   activeByDefault: 0
+  distanceDisplay: {fileID: 0}
 --- !u!1 &4327898378665964913
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ namespace GhettosFirearmSDKv2
         private Transform[] _allPositions;
         private Transform[] _cappedPositions;
 
+        [EasyButtons.Button]
         private void Start()
         {
             List<Transform> original = magazine.cartridgePositions.ToList();

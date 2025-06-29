@@ -18,5 +18,15 @@ namespace GhettosFirearmSDKv2
         public AudioSource resetSound;
 
         public float onTriggerWeight = 0.8f;
+        
+        [Space]
+        public bool fireModeSelectionMode;
+        public float secondModePullWeight = 0.9f;
+        public Transform secondModePulledPosition;
+        public FirearmBase.FireModes firstMode;
+        public FirearmBase.FireModes secondMode;
+        [Space]
+        public FiremodeSelector selector;
+        public int[] allowedIndexesForSecondMode;
     }
 }

@@ -9,7 +9,7 @@ namespace GhettosFirearmSDKv2
     [AddComponentMenu("Firearm SDK v2/Ammunition/Default magazine load")]
     public class MagazineLoad : MonoBehaviour
     {
-        [TypePicker(TypePicker.Types.Caliber)]
+        [TypePicker(TypePicker.Types.Cartridges)]
         public string cartridgeReference;
 
         [Button]

@@ -20,7 +20,7 @@ namespace GhettosFirearmSDKv2
                 t.localPosition = Vector3.zero;
             }
             
-            List<string> calibers = JsonUtility.FromJson<Wrapper>(TypeFiles.CalibersFile().text).array.ToList();
+            List<string> calibers = JsonUtility.FromJson<Wrapper>(TypeFiles.CartridgesFile().text).array.ToList();
             transformsList = trs.OrderBy(tr => calibers.IndexOf(tr.name)).ToList();
         }
 

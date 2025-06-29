@@ -1,22 +1,30 @@
 ﻿using UnityEngine;
 using ThunderRoad;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Collections;
+using EasyButtons;
+using GhettosFirearmSDKv2.Attachments;
+using UnityEngine.Serialization;
 
 namespace GhettosFirearmSDKv2
 {
-    [AddComponentMenu("Firearm SDK v2/Attachments/Systems/Sights/Simple scope")]
+    [AddComponentMenu("Firearm SDK v2/Attachments/Systems/Sights/Scope")]
     public class Scope : MonoBehaviour
     {
+        public GameObject attachmentManager;
+        [FormerlySerializedAs("connectedAtatchment")]
+        public Attachment connectedAttachment;
+
         public enum LensSizes
         {
             _10mm = 10,
+            _15mm = 15,
             _20mm = 20,
             _25mm = 25,
             _30mm = 30,
             _35mm = 35,
             _40mm = 40,
+            _45mm = 45,
             _50mm = 50,
             _100mm = 100,
             _200mm = 200
@@ -33,20 +41,18 @@ namespace GhettosFirearmSDKv2
         public float noZoomMagnification;
         public bool hasZoom = true;
         public Handle controllingHandle;
-        public Firearm connectedFirearm;
-        public Attachment connectedAtatchment;
-        public List<float> MagnificationLevels;
-        public Transform Selector; 
-        public List<Transform> SelectorPositions;
-        public List<GameObject> Reticles;
-        public AudioSource CycleUpSound;
-        public AudioSource CycleDownSound;
-        int currentIndex;
+        [FormerlySerializedAs("MagnificationLevels")] public List<float> magnificationLevels;
+        [FormerlySerializedAs("Selector")] public Transform selector;
+        [FormerlySerializedAs("SelectorPositions")] public List<Transform> selectorPositions;
+        [FormerlySerializedAs("Reticles")] public List<GameObject> reticles;
+        [FormerlySerializedAs("CycleUpSound")] public AudioSource cycleUpSound;
+        [FormerlySerializedAs("CycleDownSound")] public AudioSource cycleDownSound;
+        public int currentIndex;
 
         [EasyButtons.Button]
         public void UpdateZoom()
         {
-            SetZoomNoZoomer(noZoomMagnification);
+            SetFOVFromMagnification(hasZoom ? magnificationLevels[currentIndex] : noZoomMagnification);
             UpdatePosition();
         }
 
@@ -56,25 +62,13 @@ namespace GhettosFirearmSDKv2
             rt.graphicsFormat = UnityEngine.Experimental.Rendering.GraphicsFormat.R16G16B16A16_UNorm;
             cam.targetTexture = rt;
             if (lens != null) lenses.Add(lens);
-            StartCoroutine(delayedLoad());
+            StartCoroutine(DelayedLoad());
         }
 
-        private void Settings_LevelModule_OnValueChangedEvent()
-        {
-            if (hasZoom) SetZoom();
-            else SetZoomNoZoomer(noZoomMagnification);
-        }
-
-        IEnumerator delayedLoad()
+        IEnumerator DelayedLoad()
         {
             yield return new WaitForSeconds(1.05f);
-            if (hasZoom && connectedFirearm != null)
-            {
-            }
-            else if (hasZoom && connectedAtatchment != null)
-            {
-            }
-            else SetZoomNoZoomer(noZoomMagnification);
+            SetFOVFromMagnification(noZoomMagnification);
 
             if (hasZoom)
             {
@@ -84,18 +78,25 @@ namespace GhettosFirearmSDKv2
             }
         }
 
+        [Button]
+        public void CycleUp() => Cycle(true);
+        [Button]
+        public void CycleDown() => Cycle(false);
+
         public void Cycle(bool up)
         {
             if (up)
             {
-                CycleUpSound.Play();
-                if (currentIndex == MagnificationLevels.Count - 1) currentIndex = -1;
+                if (cycleUpSound != null)
+                    cycleUpSound.Play();
+                if (currentIndex == magnificationLevels.Count - 1) currentIndex = -1;
                 currentIndex++;
             }
             else
             {
-                CycleDownSound.Play();
-                if (currentIndex == 0) currentIndex = MagnificationLevels.Count;
+                if (cycleDownSound != null)
+                    cycleDownSound.Play();
+                if (currentIndex == 0) currentIndex = magnificationLevels.Count;
                 currentIndex--;
             }
             SetZoom();
@@ -104,7 +105,7 @@ namespace GhettosFirearmSDKv2
 
         public void SetZoom()
         {
-            SetZoomNoZoomer(MagnificationLevels[currentIndex]);
+            SetFOVFromMagnification(magnificationLevels[currentIndex]);
         }
 
         public float GetScale()
@@ -114,26 +115,27 @@ namespace GhettosFirearmSDKv2
 
         public void UpdatePosition()
         {
-            if (Reticles.Count > currentIndex && Reticles[currentIndex] != null)
+            if (reticles.Count > currentIndex && reticles[currentIndex] != null)
             {
-                foreach (GameObject reticle in Reticles)
+                foreach (GameObject reticle in reticles)
                 {
                     reticle.SetActive(false);
                 }
-                Reticles[currentIndex].SetActive(true);
+                reticles[currentIndex].SetActive(true);
             }
-            if (Selector != null && SelectorPositions[currentIndex] is Transform t)
+            if (selector != null && selectorPositions[currentIndex] is Transform t)
             {
-                Selector.localPosition = t.localPosition;
-                Selector.localEulerAngles = t.localEulerAngles;
+                selector.localPosition = t.localPosition;
+                selector.localEulerAngles = t.localEulerAngles;
             }
         }
 
-        public void SetZoomNoZoomer(float zoom)
+        [EasyButtons.Button]
+        public void SetFOVFromMagnification(float magnification)
         {
-            float factor = 2.0f * Mathf.Tan(0.5f * 20 /* from firearm settings */ * Mathf.Deg2Rad);
-            float fov = 2.0f * Mathf.Atan(factor / (2.0f * zoom)) * Mathf.Rad2Deg;
-            
+            float factor = 2.0f * Mathf.Tan(0.5f * /*var*/20f * Mathf.Deg2Rad);
+            float fov = 2.0f * Mathf.Atan(factor / (2.0f * magnification)) * Mathf.Rad2Deg;
+
             cam.fieldOfView = fov;
             foreach (Camera c in additionalCameras)
             {
@@ -141,7 +143,7 @@ namespace GhettosFirearmSDKv2
             }
             UpdateRenderers();
         }
-        
+
         public void UpdateRenderers()
         {
             foreach (MeshRenderer l in lenses)

@@ -10,5 +10,11 @@ namespace GhettosFirearmSDKv2
 
         public Transform axis;
         public List<Transform> positions;
+
+        public Transform safePosition;
+        public Transform semiPosition;
+        public Transform burstPosition;
+        public Transform autoPosition;
+        public Transform attachmentFirearmPosition;
     }
 }

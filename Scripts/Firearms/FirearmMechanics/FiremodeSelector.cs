@@ -9,12 +9,18 @@ namespace GhettosFirearmSDKv2
     public class FiremodeSelector : MonoBehaviour
     {
         public FirearmBase firearm;
-        public Transform SafetySwitch;
-        public Transform SafePosition;
-        public Transform SemiPosition;
-        public Transform BurstPosition;
-        public Transform AutoPosition;
-        public Transform AttachmentFirearmPosition;
+        public Attachment attachment;
+        [FormerlySerializedAs("SafetySwitch")]
+        public Transform safetySwitch;
+        [FormerlySerializedAs("SafePosition")]
+        public Transform safePosition;
+        [FormerlySerializedAs("SemiPosition")]
+        public Transform semiPosition;
+        [FormerlySerializedAs("BurstPosition")]
+        public Transform burstPosition;
+        [FormerlySerializedAs("AutoPosition")]
+        public Transform autoPosition;
+        public Transform attachmentFirearmPosition;
         public AudioSource switchSound;
         public FirearmBase.FireModes[] firemodes;
         public float[] fireRates;

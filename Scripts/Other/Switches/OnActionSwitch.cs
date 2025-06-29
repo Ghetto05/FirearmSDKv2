@@ -24,7 +24,7 @@ namespace GhettosFirearmSDKv2
         private int current = 0;
         [Header("Event 0 is the default, on spawn executed")]
         public List<UnityEvent> events;
-        public Item parentItem;
+        public GameObject attachmentManager;
         public Attachment parentAttachment;
         public List<SwitchRelation> switches;
 

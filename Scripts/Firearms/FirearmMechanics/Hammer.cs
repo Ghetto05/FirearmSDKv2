@@ -1,15 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using ThunderRoad;
 
 namespace GhettosFirearmSDKv2
 {
     [AddComponentMenu("Firearm SDK v2/Firearm components/Hammer")]
     public class Hammer : MonoBehaviour
     {
-        [HideInInspector]
-        public Item item;
-        public Firearm firearm;
+        public FirearmBase firearm;
         public Transform hammer;
         public Transform idlePosition;
         public Transform cockedPosition;

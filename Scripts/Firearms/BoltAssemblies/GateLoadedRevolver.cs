@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ThunderRoad;
+using UnityEngine.Serialization;
 
 namespace GhettosFirearmSDKv2
 {
@@ -31,15 +32,16 @@ namespace GhettosFirearmSDKv2
         public Transform hammerAxis;
         public Transform hammerIdlePosition;
         public Transform hammerCockedPosition;
+        public Transform hammerLoadPosition;
         public Collider cockCollider;
 
         [Header("Ejector Rod")]
         public Transform roundReparent;
-        public Rigidbody ejectorRB;
+        public Rigidbody ejectorRb;
         public Transform ejectorAxis;
         public Transform ejectorRoot;
         public Transform ejectorEjectPoint;
-        private ConfigurableJoint ejectorJoint;
+        private ConfigurableJoint _ejectorJoint;
         public float ejectForce;
         public Transform ejectDir;
         public Transform springRoot;
@@ -91,22 +93,22 @@ namespace GhettosFirearmSDKv2
             if (loadMode)
             {
                 Vector3 vec = BoltBase.GrandparentLocalPosition(ejectorEjectPoint, firearm.item.transform);
-                ejectorJoint.anchor = new Vector3(vec.x, vec.y, vec.z + ((ejectorRoot.localPosition.z - ejectorEjectPoint.localPosition.z) / 2));
+                _ejectorJoint.anchor = new Vector3(vec.x, vec.y, vec.z + ((ejectorRoot.localPosition.z - ejectorEjectPoint.localPosition.z) / 2));
                 SoftJointLimit limit = new SoftJointLimit();
                 limit.limit = Vector3.Distance(ejectorEjectPoint.position, ejectorRoot.position) / 2;
-                ejectorJoint.linearLimit = limit;
+                _ejectorJoint.linearLimit = limit;
 
-                ejectorAxis.SetParent(ejectorRB.transform);
+                ejectorAxis.SetParent(ejectorRb.transform);
                 ejectorAxis.localPosition = Vector3.zero;
                 ejectorAxis.localEulerAngles = Vector3.zero;
             }
             else
             {
                 Vector3 vec = BoltBase.GrandparentLocalPosition(ejectorRoot, firearm.item.transform);
-                ejectorJoint.anchor = new Vector3(vec.x, vec.y, vec.z);
+                _ejectorJoint.anchor = new Vector3(vec.x, vec.y, vec.z);
                 SoftJointLimit limit = new SoftJointLimit();
                 limit.limit = 0f;
-                ejectorJoint.linearLimit = limit;
+                _ejectorJoint.linearLimit = limit;
 
                 ejectorAxis.SetParent(ejectorRoot);
                 ejectorAxis.localPosition = Vector3.zero;
@@ -116,22 +118,22 @@ namespace GhettosFirearmSDKv2
 
         public void InitializeEjectorJoint()
         {
-            if (ejectorJoint == null)
+            if (_ejectorJoint == null)
             {
-                ejectorJoint = firearm.item.gameObject.AddComponent<ConfigurableJoint>();
-                ejectorJoint.connectedBody = ejectorRB;
-                ejectorJoint.massScale = 0.00001f;
+                _ejectorJoint = firearm.item.gameObject.AddComponent<ConfigurableJoint>();
+                _ejectorJoint.connectedBody = ejectorRb;
+                _ejectorJoint.massScale = 0.00001f;
 
-                ejectorJoint.autoConfigureConnectedAnchor = false;
-                ejectorJoint.connectedAnchor = Vector3.zero;
-                ejectorJoint.xMotion = ConfigurableJointMotion.Locked;
-                ejectorJoint.yMotion = ConfigurableJointMotion.Locked;
-                ejectorJoint.zMotion = ConfigurableJointMotion.Limited;
-                ejectorJoint.angularXMotion = ConfigurableJointMotion.Locked;
-                ejectorJoint.angularYMotion = ConfigurableJointMotion.Locked;
-                ejectorJoint.angularZMotion = ConfigurableJointMotion.Locked;
-                ejectorRB.transform.localPosition = ejectorRoot.localPosition;
-                ejectorRB.transform.localRotation = ejectorRoot.localRotation;
+                _ejectorJoint.autoConfigureConnectedAnchor = false;
+                _ejectorJoint.connectedAnchor = Vector3.zero;
+                _ejectorJoint.xMotion = ConfigurableJointMotion.Locked;
+                _ejectorJoint.yMotion = ConfigurableJointMotion.Locked;
+                _ejectorJoint.zMotion = ConfigurableJointMotion.Limited;
+                _ejectorJoint.angularXMotion = ConfigurableJointMotion.Locked;
+                _ejectorJoint.angularYMotion = ConfigurableJointMotion.Locked;
+                _ejectorJoint.angularZMotion = ConfigurableJointMotion.Locked;
+                ejectorRb.transform.localPosition = ejectorRoot.localPosition;
+                ejectorRb.transform.localRotation = ejectorRoot.localRotation;
             }
         }
 

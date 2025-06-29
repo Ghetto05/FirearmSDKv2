@@ -12,5 +12,6 @@ namespace GhettosFirearmSDKv2
         public AudioSource toggleSound;
         public Transform pivot;
         public Transform[] positions;
+        public bool useAsSeparateObjects;
     }
 }

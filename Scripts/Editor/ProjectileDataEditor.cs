@@ -17,6 +17,14 @@ namespace GhettosFirearmSDKv2
         {
             EditorGUILayout.LabelField("Shared settings", EditorStyles.boldLabel);
             data = (ProjectileData)target;
+            data.isInert = EditorGUILayout.Toggle("Inert cartridge", data.isInert);
+
+            if (data.isInert)
+            {
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+            
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Additional information for ammo box:", GUILayout.Width(300));
             data.additionalInformation = EditorGUILayout.TextArea(data.additionalInformation);
@@ -99,6 +107,7 @@ namespace GhettosFirearmSDKv2
                 data.enoughToIncapitate = EditorGUILayout.Toggle("Strong enough to incapacitate?", data.enoughToIncapitate);
                 data.lethalHeadshot = EditorGUILayout.Toggle("Is headshot guaranteed kill?", data.lethalHeadshot);
                 data.forceDestabilize = EditorGUILayout.Toggle("Always destabilize hit creature?", data.forceDestabilize);
+                data.fireDamage = EditorGUILayout.FloatField("Fire damage (100 to burn)", data.fireDamage);
                 data.penetrationPower = (ProjectileData.PenetrationLevels)EditorGUILayout.EnumPopup("Penetration power", data.penetrationPower);
 
                 EditorGUILayout.Space();

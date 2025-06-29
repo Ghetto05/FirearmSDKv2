@@ -15,9 +15,10 @@ namespace GhettosFirearmSDKv2
         public enum Types
         {
             Attachment,
-            Caliber,
+            Cartridges,
             ExplosiveEffect,
-            Countries
+            Countries,
+            RailTypes
         }
 
         public bool showPopup;
@@ -53,7 +54,7 @@ namespace GhettosFirearmSDKv2
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (property.propertyType == SerializedPropertyType.String)
+            if (property.propertyType == SerializedPropertyType.String && Selection.objects.Length <= 1)
             {
                 TypePicker typePicker = attribute as TypePicker;
                 if (firstShow)
@@ -68,9 +69,9 @@ namespace GhettosFirearmSDKv2
                                 content = TypeFiles.AttachmentTypesFile().text;
                             }
                             break;
-                        case TypePicker.Types.Caliber:
+                        case TypePicker.Types.Cartridges:
                             {
-                                content = TypeFiles.CalibersFile().text;
+                                content = TypeFiles.CartridgesFile().text;
                             }
                             break;
                         case TypePicker.Types.ExplosiveEffect:
@@ -81,6 +82,11 @@ namespace GhettosFirearmSDKv2
                         case TypePicker.Types.Countries:
                             {
                                 content = TypeFiles.CountriesFile().text;
+                            }
+                            break;
+                        case TypePicker.Types.RailTypes:
+                            {
+                                content = TypeFiles.RailTypeFile().text;
                             }
                             break;
                         default:
@@ -102,9 +108,9 @@ namespace GhettosFirearmSDKv2
                                 content = TypeFiles.AttachmentTypesFile().text;
                             }
                             break;
-                        case TypePicker.Types.Caliber:
+                        case TypePicker.Types.Cartridges:
                             {
-                                content = TypeFiles.CalibersFile().text;
+                                content = TypeFiles.CartridgesFile().text;
                             }
                             break;
                         case TypePicker.Types.ExplosiveEffect:
@@ -115,6 +121,11 @@ namespace GhettosFirearmSDKv2
                         case TypePicker.Types.Countries:
                             {
                                 content = TypeFiles.CountriesFile().text;
+                            }
+                            break;
+                        case TypePicker.Types.RailTypes:
+                            {
+                                content = TypeFiles.RailTypeFile().text;
                             }
                             break;
                         default:

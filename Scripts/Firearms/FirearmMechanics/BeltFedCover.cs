@@ -18,7 +18,6 @@ namespace GhettosFirearmSDKv2
         public Rigidbody rb;
         public Transform closedPosition;
         public Transform openedPosition;
-        public MagazineWell magazineWell;
 
         public List<Handle> coverHandles;
 
@@ -29,6 +28,8 @@ namespace GhettosFirearmSDKv2
         public float maxAngle;
         
         public BoltBase.BoltState state = BoltBase.BoltState.Locked;
+        public bool preventGrab;
+        public List<MagazineWell> magazineWells;
 
         private HingeJoint _joint;
         private bool _locked;
@@ -111,13 +112,14 @@ namespace GhettosFirearmSDKv2
 
         private void InitializeJoint()
         {
-            _joint = magazineWell.firearm.gameObject.AddComponent<HingeJoint>();
+            var firearm = GetComponentInParent<Firearm>();
+            _joint = firearm.gameObject.AddComponent<HingeJoint>();
             _joint.axis = Vector3.left;
             rb.transform.position = closedPosition.position;
             rb.transform.rotation = closedPosition.rotation;
             _joint.connectedBody = rb;
             _joint.massScale = 0.00001f;
-            _joint.anchor = BoltBase.GrandparentLocalPosition(rb.transform, magazineWell.firearm.item.transform);
+            _joint.anchor = BoltBase.GrandparentLocalPosition(rb.transform, firearm.item.transform);
             _joint.useLimits = true;
             _joint.limits = new JointLimits { min = 0, max = 0 };
             _joint.autoConfigureConnectedAnchor = false;

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using ThunderRoad;
+using UnityEngine.Serialization;
 
 namespace GhettosFirearmSDKv2
 {
     public class ViceUI : MonoBehaviour
     {
-        public bool AlwaysFrozen;
+        [FormerlySerializedAs("AlwaysFrozen")]
+        public bool alwaysFrozen;
         public bool allowFreeze = true;
 
         public Firearm currentFirearm;
@@ -34,7 +36,8 @@ namespace GhettosFirearmSDKv2
         public GameObject attachmentButtonPrefab;
 
         public float categoryElementHeight;
-        public float categroyHeaderHeight;
+        [FormerlySerializedAs("categroyHeaderHeight")]
+        public float categoryHeaderHeight;
         public float categoryGapHeight;
 
         private void Awake()
@@ -86,7 +89,7 @@ namespace GhettosFirearmSDKv2
             foreach (AttachmentPoint point in parentFirearm.attachmentPoints)
             {
                 AddPoint(point, parentFirearm.item.preview.generatedIcon, point.id);
-                if (point.currentAttachment != null) FromAttachment(point.currentAttachment);
+                //if (point.currentAttachment != null) FromAttachment(point.currentAttachment);
             }
         }
 
@@ -138,7 +141,7 @@ namespace GhettosFirearmSDKv2
                     }
 
                     Debug.Log($"Gaps: {previousGaps}, Rows: {previousRows}, Headers: {previousHeaders}");
-                    float newY = -previousRows * categoryElementHeight - previousHeaders * categroyHeaderHeight - previousGaps * categoryGapHeight;
+                    float newY = -previousRows * categoryElementHeight - previousHeaders * categoryHeaderHeight - previousGaps * categoryGapHeight;
 
                     cat.localPosition = new Vector3(0, newY, 0);
                 }
@@ -163,7 +166,7 @@ namespace GhettosFirearmSDKv2
                     gaps--;
                 }
             }
-            float Y = rows * categoryElementHeight + headers * categroyHeaderHeight + gaps * categoryGapHeight;
+            float Y = rows * categoryElementHeight + headers * categoryHeaderHeight + gaps * categoryGapHeight;
             trans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Y);
         }
 
@@ -172,7 +175,7 @@ namespace GhettosFirearmSDKv2
             foreach (AttachmentPoint point in attachment.attachmentPoints)
             {
                 AddPoint(point, attachment.icon, point.id);
-                if (point.currentAttachment != null) FromAttachment(point.currentAttachment);
+                //if (point.currentAttachment != null) FromAttachment(point.currentAttachment);
             }
         }
 
@@ -198,21 +201,13 @@ namespace GhettosFirearmSDKv2
             currentSlot = point;
         }
 
-        private void Update()
-        {
-            //canvas.enabled = holder.items.Count > 0;
-            //if (currentSlot != lastSlot)
-            //{
-            //    SetupAttachmentList(currentSlot.type);
-            //}
-        }
-
         private void SetupAttachmentList(string attachmentType)
-        {
-        }
+        { }
 
         public void SpawnAttachment()
-        {
-        }
+        { }
+
+        public void MoveAttachment(bool forwards)
+        { }
     }
 }

@@ -14,6 +14,7 @@ namespace GhettosFirearmSDKv2
         
         public Rigidbody rb;
         public Transform lever;
+        public Transform leverColliders;
         public Transform start;
         public Transform end;
 
@@ -93,7 +94,8 @@ namespace GhettosFirearmSDKv2
 
         private void InitializeJoint()
         {
-            _joint = bolt.firearm.gameObject.AddComponent<HingeJoint>();
+            if (_joint == null)
+                _joint = bolt.firearm.gameObject.AddComponent<HingeJoint>();
             _joint.axis = Vector3.left;
             rb.transform.position = start.position;
             rb.transform.rotation = start.rotation;

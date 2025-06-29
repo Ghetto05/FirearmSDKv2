@@ -13,7 +13,7 @@ namespace GhettosFirearmSDKv2
         public ParticleSystem panEffect;
         public PowderReceiver mainReceiver;
         public float baseRecoil = 20;
-        
+
         [Header("Hammer")]
         public Transform hammer;
         public Transform hammerIdlePosition;
@@ -45,6 +45,7 @@ namespace GhettosFirearmSDKv2
         public Collider ramRodInsertCollider;
         private ConfigurableJoint joint;
         private bool rodAwayFromBreach;
+        public bool flipRodOnInsert;
 
         [Header("Ram rod store")]
         public Transform rodStoreFrontEnd;
@@ -55,7 +56,7 @@ namespace GhettosFirearmSDKv2
         private bool rodAwayFromStoreEnd;
 
         [Header("Audio")]
-        public AudioSource[] sizzleSound; 
+        public AudioSource[] sizzleSound;
         [Space]
         public AudioSource[] hammerCockSounds;
         public AudioSource[] hammerFireSounds;
@@ -113,7 +114,7 @@ namespace GhettosFirearmSDKv2
                 //INVOKEFINISH
                 return;
             }
-            
+
             Util.PlayRandomAudioSource(hammerFireSounds);
             hammer.SetPositionAndRotation(hammerIdlePosition.position, hammerIdlePosition.rotation);
             _hammerState = false;
@@ -123,7 +124,7 @@ namespace GhettosFirearmSDKv2
                 //INVOKEFINISH
                 return;
             }
-            
+
             OpenPan();
 
             if (!panReceiver.Sufficient())
@@ -136,7 +137,7 @@ namespace GhettosFirearmSDKv2
             Util.PlayRandomAudioSource(sizzleSound);
             if (panEffect != null)
                 panEffect.Play();
-            
+
             Invoke(nameof(DelayedFire), fireDelay);
 
             base.TryFire();
@@ -191,11 +192,11 @@ namespace GhettosFirearmSDKv2
         private void FixedUpdate()
         {
             mainReceiver.blocked = loadedCartridge != null || currentRamRod != null;
-            
+
             if (currentRamRod != null && !rodAwayFromBreach &&
                 Vector3.Distance(currentRamRod.transform.position, rodFrontEnd.position) > 0.05f)
                 rodAwayFromBreach = true;
-            
+
             if (currentRamRod != null && rodAwayFromBreach &&
                 Vector3.Distance(currentRamRod.transform.position, rodFrontEnd.position) < 0.02f)
             {

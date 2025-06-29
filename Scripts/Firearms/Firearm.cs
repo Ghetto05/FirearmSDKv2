@@ -7,13 +7,21 @@ using UnityEngine;
 using ThunderRoad;
 using UnityEditor;
 using EasyButtons;
+using GhettosFirearmSDKv2.Attachments;
 
 namespace GhettosFirearmSDKv2
 {
     [AddComponentMenu("Firearm SDK v2/Firearm")]
     [RequireComponent(typeof(Item))]
-    public class Firearm : FirearmBase
+    public class Firearm : FirearmBase, IAttachmentManager
     {
+        #region TheftPrevention
+
+        [HideInInspector]
+        public bool GhettoMade_23103012730712037091283 = true;
+
+        #endregion
+        
         public List<AttachmentPoint> attachmentPoints;
 #if UNITY_EDITOR
         [Button]
@@ -108,7 +116,7 @@ namespace GhettosFirearmSDKv2
             item.preview.transform.localEulerAngles = new Vector3(8.88f, -115.118f, 0f);
         }
 
-        void Reset()
+        private void Reset()
         {
             AddAnchorsAndFixPreview();
             if (hitscanMuzzle == null)
@@ -127,11 +135,13 @@ namespace GhettosFirearmSDKv2
 #endif
         private bool HasAnchor(string s)
         {
-            foreach (Item.HolderPoint point in item.additionalHolderPoints)
-            {
-                if (point.anchorName.Equals(s)) return true;
-            }
-            return false;
+            return item.additionalHolderPoints.Any(point => point.anchorName.Equals(s));
         }
+
+        public List<AttachmentPoint> AttachmentPoints { get; set; }
+        public List<Attachment> CurrentAttachments { get; set; }
+        public event IAttachmentManager.Collision OnCollision;
+        public event IAttachmentManager.AttachmentAdded OnAttachmentAdded;
+        public event IAttachmentManager.AttachmentRemoved OnAttachmentRemoved;
     }
 }

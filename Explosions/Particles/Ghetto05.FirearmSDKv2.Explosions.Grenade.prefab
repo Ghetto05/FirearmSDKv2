@@ -4831,6 +4831,9 @@ MonoBehaviour:
   isOutOfPool: 0
   step: 0
   stepCustomHashId: 0
+  effectIntensity: 0
+  effectSpeed: 0
+  effectSize: 0
   poolCount: 50
   lifeTime: 5
   intensityCurve:

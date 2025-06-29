@@ -23,22 +23,22 @@ namespace GhettosFirearmSDKv2
             all.Add(this);
         }
 
-        public void SetColor(NVGOnlyRenderer.ThermalTypes t)
+        public void SetColor(NvgOnlyRenderer.ThermalTypes t)
         {
             Material m = null;
-            if (t == NVGOnlyRenderer.ThermalTypes.Standard)
+            if (t == NvgOnlyRenderer.ThermalTypes.Standard)
             {
                 m = standardMaterial;
             }
-            else if (t == NVGOnlyRenderer.ThermalTypes.BlackHot)
+            else if (t == NvgOnlyRenderer.ThermalTypes.BlackHot)
             {
                 m = blackHotMaterial;
             }
-            else if (t == NVGOnlyRenderer.ThermalTypes.RedHot)
+            else if (t == NvgOnlyRenderer.ThermalTypes.RedHot)
             {
                 m = redHotMaterial;
             }
-            else if (t == NVGOnlyRenderer.ThermalTypes.WhiteHot)
+            else if (t == NvgOnlyRenderer.ThermalTypes.WhiteHot)
             {
                 m = whiteHotMaterial;
             }

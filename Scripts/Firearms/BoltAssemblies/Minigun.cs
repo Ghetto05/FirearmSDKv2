@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GhettosFirearmSDKv2
 {
@@ -18,9 +19,13 @@ namespace GhettosFirearmSDKv2
         public float roundEjectForce;
         public Transform barrel;
 
-        public AudioSource RevUpSound;
-        public AudioSource RevDownSound;
-        public AudioSource RotatingLoop;
-        public AudioSource RotatingLoopPlusFiring;
+        [FormerlySerializedAs("RevUpSound")]
+        public AudioSource revUpSound;
+        [FormerlySerializedAs("RevDownSound")]
+        public AudioSource revDownSound;
+        [FormerlySerializedAs("RotatingLoop")]
+        public AudioSource rotatingLoop;
+        [FormerlySerializedAs("RotatingLoopPlusFiring")]
+        public AudioSource rotatingLoopPlusFiring;
     }
 }

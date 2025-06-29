@@ -15,6 +15,7 @@ namespace GhettosFirearmSDKv2
         public Collider loadingCollider;
         public Transform mountPoint;
         public bool canEject = true;
+        public bool forceCanGrab = false;
         public bool ejectOnEmpty = false;
         public Magazine currentMagazine;
         public bool mountCurrentMagazine = false;
@@ -26,6 +27,7 @@ namespace GhettosFirearmSDKv2
         public BoltBase.BoltState lockedState;
         public List<Lock> insertionLocks;
         public Transform beltLinkEjectDir;
+        public string customSaveId;
 
         public bool IsEmpty()
         {

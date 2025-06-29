@@ -11,9 +11,13 @@ namespace GhettosFirearmSDKv2
         public Item item;
         public Attachment attachment;
         public List<Handle> handles;
+        public bool useFireHandle;
 
         public Transform gate;
         public Transform locked;
         public Transform unlocked;
+
+        public List<AudioSource> openSounds;
+        public List<AudioSource> closeSounds;
     }
 }

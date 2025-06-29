@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GhettosFirearmSDKv2
 {
@@ -18,6 +20,7 @@ namespace GhettosFirearmSDKv2
         public bool onlyCatchIfManuallyPulled = false;
         public bool chargingHandleLocksBack = false;
         public bool lockIfNoMagazineFound = false;
+        public bool loadRoundOnPull;
         public BoltReleaseButton[] releaseButtons;
         [Space]
         public Rigidbody rigidBody;
@@ -33,6 +36,7 @@ namespace GhettosFirearmSDKv2
         [Space]
         public Transform roundMount;
         public Cartridge loadedCartridge;
+        public BoltFailureData[] failureData;
         [Space]
         private ConfigurableJoint joint;
         public ConstantForce force;

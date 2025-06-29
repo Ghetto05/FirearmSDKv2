@@ -12,26 +12,27 @@ namespace GhettosFirearmSDKv2
 
         public static TextAsset AttachmentTypesFile()
         {
-            TextAsset ta = Catalog.EditorLoad<TextAsset>("FirearmSDK.AttachmentTypes");
-            return ta;
+            return Catalog.EditorLoad<TextAsset>("FirearmSDK.AttachmentTypes");
         }
 
-        public static TextAsset CalibersFile()
+        public static TextAsset CartridgesFile()
         {
-            TextAsset ta = Catalog.EditorLoad<TextAsset>("FirearmSDK.Calibers");
-            return ta;
+            return Catalog.EditorLoad<TextAsset>("FirearmSDK.Cartridges");
         }
 
         public static TextAsset ExplosiveEffectsFile()
         {
-            TextAsset ta = Catalog.EditorLoad<TextAsset>("FirearmSDK.ExplosiveEffects");
-            return ta;
+            return Catalog.EditorLoad<TextAsset>("FirearmSDK.ExplosiveEffects");
         }
 
         public static TextAsset CountriesFile()
         {
-            TextAsset ta = Catalog.EditorLoad<TextAsset>("FirearmSDK.Countries");
-            return ta;
+            return Catalog.EditorLoad<TextAsset>("FirearmSDK.Countries");
+        }
+
+        public static TextAsset RailTypeFile()
+        {
+            return Catalog.EditorLoad<TextAsset>("FirearmSDK.RailTypes");
         }
 #endif
     }

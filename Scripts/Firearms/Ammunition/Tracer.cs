@@ -27,26 +27,36 @@ namespace GhettosFirearmSDKv2
         [HideInInspector]
         public Material whiteMaterial;
         public List<MeshRenderer> tracerRenderers;
+        public Light emissionLight;
 
         private void OnValidate()
         {
-            foreach (Renderer tracerRenderer in tracerRenderers)
+            emissionLight.color = color switch
             {
-                tracerRenderer.material = getMaterial(color);
+                Colors.Red => Color.red,
+                Colors.Green => Color.green,
+                Colors.Blue => Color.blue,
+                Colors.Orange => Color.yellow,
+                Colors.White => Color.white,
+                _ => Color.black
+            };
+            foreach (var tracerRenderer in tracerRenderers)
+            {
+                tracerRenderer.material = GetMaterial(color);
             }
         }
 
-        public Material getMaterial(Colors targetColor)
+        private Material GetMaterial(Colors targetColor)
         {
-            if (targetColor == Colors.Red) return redMaterial;
-            else if (targetColor == Colors.Green) return greenMaterial;
-            else if (targetColor == Colors.Blue) return blueMaterial;
-            else if (targetColor == Colors.Orange) return orangeMaterial;
-            else if (targetColor == Colors.White) return whiteMaterial;
-            else return null;
+            return targetColor switch
+            {
+                Colors.Red => redMaterial,
+                Colors.Green => greenMaterial,
+                Colors.Blue => blueMaterial,
+                Colors.Orange => orangeMaterial,
+                Colors.White => whiteMaterial,
+                _ => null
+            };
         }
-
-        public void Update()
-        { }
     }
 }

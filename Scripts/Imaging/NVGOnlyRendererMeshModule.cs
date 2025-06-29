@@ -5,17 +5,17 @@ using UnityEngine;
 namespace GhettosFirearmSDKv2
 {
     [AddComponentMenu("Firearm SDK v2/Attachments/Systems/Illuminators/NVG Only Renderer - Mesh module")]
-    public class NVGOnlyRendererMeshModule : MonoBehaviour
+    public class NvgOnlyRendererMeshModule : MonoBehaviour
     {
-        public static List<NVGOnlyRendererMeshModule> all;
+        public static List<NvgOnlyRendererMeshModule> All;
 
-        public NVGOnlyRenderer.Types renderType;
+        public NvgOnlyRenderer.Types renderType;
         public List<GameObject> objects;
 
         public void Start()
         {
-            if (all == null) all = new List<NVGOnlyRendererMeshModule>();
-            all.Add(this);
+            if (All == null) All = new List<NvgOnlyRendererMeshModule>();
+            All.Add(this);
             foreach (GameObject obj in objects)
             {
                 obj.SetActive(false);
@@ -24,7 +24,7 @@ namespace GhettosFirearmSDKv2
 
         public void OnDestroy()
         {
-            all.Remove(this);
+            All.Remove(this);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace GhettosFirearmSDKv2
         public bool infinite = false;
         public string magazineType;
         public string caliber;
+        public bool useCaliberOfMagazineWell;
         public List<string> alternateCalibers;
         public bool forceCorrectCaliber = false;
         public List<Cartridge> cartridges;
@@ -28,20 +29,27 @@ namespace GhettosFirearmSDKv2
         public AudioSource[] magazineEjectSounds;
         public AudioSource[] magazineInsertSounds;
         public Collider mountCollider;
+        public Transform overrideMountPoint;
         public bool canBeGrabbedInWell;
         public List<Handle> handles;
         [HideInInspector]
         public MagazineWell currentWell;
         public Transform nullCartridgePosition;
         public Transform[] cartridgePositions;
+        public Transform[] oddCountCartridgePositions;
+        public List<Transform[]> alternateCartridgePositions;
         public MagazineLoad defaultLoad;
         [HideInInspector]
         public bool hasOverrideLoad;
         public Item overrideItem;
+        public Attachment overrideAttachment;
         public List<Collider> colliders;
         public List<GameObject> feederObjects;
         public BoltBase bolt;
         public bool onlyAllowLoadWhenBoltIsBack;
+        public List<MagazinePositionSet> positionSets;
+        public bool addHandlesToParentMagazine;
+        public string overrideMagazineAttachmentType;
 
 #if UNITY_EDITOR
         [EasyButtons.Button]
@@ -159,7 +167,7 @@ namespace GhettosFirearmSDKv2
             if (cartridges.Count < maximumCapacity && !cartridges.Contains(c))
             {
                 int nullPositions = cartridges.Count(cn => cn == null);
-                
+
                 if (!atBottom)
                     cartridges.Insert(nullPositions, c);
                 else

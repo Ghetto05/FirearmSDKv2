@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using ThunderRoad;
 
 namespace GhettosFirearmSDKv2
 {
@@ -14,9 +12,6 @@ namespace GhettosFirearmSDKv2
         public float range;
         public bool activeByDefault;
         public Text distanceDisplay;
-        public Item item;
-        public Attachment attachment;
-        private Item actualItem;
 
         private void Start()
         {

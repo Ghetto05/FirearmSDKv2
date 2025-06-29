@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ThunderRoad;
@@ -8,12 +7,14 @@ namespace GhettosFirearmSDKv2
     [AddComponentMenu("Firearm SDK v2/Attachments/Systems/Bipod")]
     public class Bipod : MonoBehaviour
     {
-        public Item item;
+        public GameObject attachmentManager;
         public Attachment attachment;
         public Transform axis;
         public List<Transform> positions;
         public Handle toggleHandle;
         public AudioSource toggleSound;
+        public Bipod[] requiredBipods;
+        public Bipod[] requiredInactiveBipods;
         [HideInInspector]
         public int index;
 

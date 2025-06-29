@@ -30,11 +30,16 @@ namespace GhettosFirearmSDKv2
         private Preview preview;
         public bool overridesMuzzleFlash;
         public ParticleSystem newFlash;
+        public int muzzleFlashPriority;
         public Transform minimumMuzzlePosition;
-        [Header("Default damager id: Mace1H")]
-        public List<Damager> damagers = new List<Damager>(); 
+        [Header("Default damager id: HandleLight")]
+        public List<Damager> damagers = new List<Damager>();
         public List<String> damagerIds = new List<string>();
         public List<Renderer> nonLightVolumeRenderers;
+        [NonSerialized]
+        public AttachmentData Data;
+        [NonSerialized]
+        private int _railPosition;
 
         public List<UnityEvent> OnAttachEvents;
         public List<UnityEvent> OnDetachEvents;
@@ -67,7 +72,7 @@ namespace GhettosFirearmSDKv2
                 Damager damager = damagerObj.AddComponent<Damager>();
                 damager.colliderGroup = colliderGroup;
                 damagers.Add(damager);
-                damagerIds.Add("Mace1H");
+                damagerIds.Add("HandleLight");
             }
             EditorUtility.SetDirty(gameObject);
         }
@@ -121,6 +126,32 @@ namespace GhettosFirearmSDKv2
             EditorUtility.SetDirty(gameObject);
         }
 
+        [Button]
+        public void SetAllHandlesAsAIForegrip()
+        {
+            FindAllHandles();
+
+            foreach (var handle in handles)
+            {
+                var h = GhettoHandle.ReplaceHandle(handle);
+                h.aiPriority = GhettoHandle.HandlePriority.Foregrip;
+            }
+            EditorUtility.SetDirty(gameObject);
+        }
+
+        [Button]
+        public void SetAllHandlesAsAIAttachmentForegrip()
+        {
+            FindAllHandles();
+
+            foreach (var handle in handles)
+            {
+                var h = GhettoHandle.ReplaceHandle(handle);
+                h.aiPriority = GhettoHandle.HandlePriority.AttachForegrip;
+            }
+            EditorUtility.SetDirty(gameObject);
+        }
+
         private void Reset()
         {
             GameObject prev = new GameObject("Preview");
@@ -138,12 +169,46 @@ namespace GhettosFirearmSDKv2
             }
         }
 #endif
-        public void AlingnWithPoint()
+
+        public void SetRailPos(int pos)
         {
+            _railPosition = pos;
         }
 
         public void Detach()
         {
+            attachmentPoint.currentAttachments.Remove(this);
+            Destroy(gameObject);
+        }
+
+        public void MoveOnRail(bool forwards)
+        {
+            if (!attachmentPoint.usesRail)
+                return;
+
+            if ((forwards && RailPosition + Data.railLength >= attachmentPoint.railSlots.Count) || (!forwards && RailPosition == 0))
+                return;
+
+            if (forwards)
+                _railPosition++;
+            else
+                _railPosition--;
+
+            UpdatePosition();
+        }
+
+        private void UpdatePosition()
+        {
+            if (!attachmentPoint.usesRail)
+                return;
+
+            transform.SetParent(attachmentPoint.railSlots[_railPosition]);
+            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        }
+
+        public int RailPosition
+        {
+            get { return _railPosition; }
         }
     }
 }

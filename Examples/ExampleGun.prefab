@@ -558,12 +558,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firearm: {fileID: 572993469556709921}
+  attachment: {fileID: 0}
   trigger: {fileID: 1743535791355834111}
   idlePosition: {fileID: 3076668132563487072}
   pulledPosition: {fileID: 6723329530781985004}
   pullSound: {fileID: 0}
   resetSound: {fileID: 0}
   onTriggerWeight: 0.8
+  fireModeSelectionMode: 0
+  secondModePullWeight: 0.9
+  secondModePulledPosition: {fileID: 0}
+  firstMode: 0
+  secondMode: 0
+  selector: {fileID: 0}
+  allowedIndexesForSecondMode: 
 --- !u!1 &1060303447935824610
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +779,9 @@ MonoBehaviour:
   tryReleasingBoltIfMagazineIsInserted: 0
   onlyAllowEjectionWhenBoltIsPulled: 0
   lockedState: 0
+  insertionLocks: []
+  beltLinkEjectDir: {fileID: 0}
+  customSaveId: 
 --- !u!1 &1931862927989756094
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,16 +1004,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firearm: {fileID: 572993469556709921}
-  SafetySwitch: {fileID: 8522818118807163748}
-  SafePosition: {fileID: 1260877078152521730}
-  SemiPosition: {fileID: 6127827125587564461}
-  BurstPosition: {fileID: 0}
-  AutoPosition: {fileID: 0}
-  AttachmentFirearmPosition: {fileID: 0}
+  attachment: {fileID: 0}
+  safetySwitch: {fileID: 8522818118807163748}
+  safePosition: {fileID: 1260877078152521730}
+  semiPosition: {fileID: 6127827125587564461}
+  burstPosition: {fileID: 0}
+  autoPosition: {fileID: 0}
+  attachmentFirearmPosition: {fileID: 0}
   switchSound: {fileID: 0}
   firemodes: 0100000000000000
+  fireRates: []
+  irregularPositions: []
   hammer: {fileID: 0}
   allowSwitchingModeIfHammerIsUncocked: 1
+  onlyAllowSwitchingIfBoltHasState: 0
+  switchAllowedState: 0
 --- !u!1 &2577067124272210682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,9 +1962,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bfdefa34e62f04c9f9bc3cb5c17e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boltIndex: -1
   firearm: {fileID: 572993469556709921}
   fireOnTriggerPress: 1
   reciprocatingBarrel: {fileID: 0}
+  breachSmokeEffects: []
+  cyclePercentage: 0
+  state: 0
+  laststate: 0
   isOpenBolt: 0
   onBoltPoints: []
   locksWhenSafetyIsOn: 0
@@ -1957,6 +1978,7 @@ MonoBehaviour:
   onlyCatchIfManuallyPulled: 0
   chargingHandleLocksBack: 0
   lockIfNoMagazineFound: 0
+  loadRoundOnPull: 0
   releaseButtons: []
   rigidBody: {fileID: 2311071062943005939}
   bolt: {fileID: 4166904344177613534}
@@ -1987,7 +2009,7 @@ MonoBehaviour:
   roundEjectForce: 0.6
   roundEjectDir: {fileID: 6771507678571982025}
   roundEjectPoint: {fileID: 0}
-  hammer: {fileID: 0}
+  hammer: {fileID: 3649153574600317365}
   cockHammerOnTriggerPull: 0
 --- !u!1 &5351501411959984055
 GameObject:
@@ -2348,10 +2370,8 @@ MonoBehaviour:
   recoilModifier: 1
   countingForLongpress: 0
   defaultAmmoItem: 
-  attachmentPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  GhettoMade_23103012730712037091283: 1
+  attachmentPoints: []
 --- !u!1 &6692292213545907218
 GameObject:
   m_ObjectHideFlags: 0

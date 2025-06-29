@@ -254,6 +254,7 @@ MonoBehaviour:
   mainHandle: {fileID: 4745900623265687244}
   secondaryHandle: {fileID: 8236219734038709008}
   firearm: {fileID: 0}
+  attachment: {fileID: 0}
 --- !u!114 &2768020023807775138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,11 +267,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fb1b985b776e74b92c1f709d68fe73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterSwitch: 0
+  dualMode: 1
+  useAltUse: 0
+  triggerChannel: 1
+  alternateUseChannel: 2
+  exclusiveDevice: {fileID: 0}
   toggleMode: 1
   attachment: {fileID: 0}
   handles:
   - {fileID: 8236219734038709008}
-  item: {fileID: 0}
+  attachmentManager: {fileID: 0}
   pressSounds: []
   releaseSounds: []
 --- !u!1 &8253229182751753474
@@ -341,6 +348,7 @@ MonoBehaviour:
   orientationDefaultRight: {fileID: 6336740995278568179}
   orientationDefaultLeft: {fileID: 1675292624839177545}
   releaseHandle: {fileID: 0}
+  activateHandle: {fileID: 0}
   silentGrab: 0
   forceAutoDropWhenGrounded: 0
   ignoreClimbingForceOverride: 0
@@ -353,6 +361,7 @@ MonoBehaviour:
   slideBehavior: 0
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
+  updatePosesAutomatically: 0
   allowedOrientations: []
   redirectControllerAxis: 0
   controllerAxisOutputX:
@@ -362,6 +371,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   type: 0
+  aiPriority: 10
 --- !u!1 &9145131411296960596
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +440,7 @@ MonoBehaviour:
   orientationDefaultRight: {fileID: 8129001625573091802}
   orientationDefaultLeft: {fileID: 411803987007179594}
   releaseHandle: {fileID: 0}
+  activateHandle: {fileID: 0}
   silentGrab: 0
   forceAutoDropWhenGrounded: 0
   ignoreClimbingForceOverride: 0
@@ -442,6 +453,7 @@ MonoBehaviour:
   slideBehavior: 0
   moveToHandle: {fileID: 0}
   moveToHandleAxisPos: 0
+  updatePosesAutomatically: 0
   allowedOrientations: []
   redirectControllerAxis: 0
   controllerAxisOutputX:
@@ -451,3 +463,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   type: 1
+  aiPriority: 0

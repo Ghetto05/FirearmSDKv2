@@ -16,6 +16,7 @@ namespace GhettosFirearmSDKv2
         }
 
         public Cartridge cartridge;
+        public Projectile projectile;
         public Behaviours behaviour;
     }
 }
